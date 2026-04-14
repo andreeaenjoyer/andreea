@@ -90,22 +90,29 @@ body{background:var(--pink-light);font-family:'Lato',sans-serif;color:var(--text
 .ribbon-line{display:flex;align-items:center;gap:.8rem;margin:1.5rem 0;color:var(--pink-mid);}
 .ribbon-line::before,.ribbon-line::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--pink-mid),transparent);}
 
-/* RECONCILE */
-.reconcile-section{text-align:center;padding:1rem 1rem 5rem;position:relative;z-index:2;}
-.reconcile-section>p{font-size:1rem;color:var(--text-mid);font-style:italic;margin-bottom:1.5rem;}
-.btn-reconcile{display:inline-block;background:linear-gradient(135deg,var(--pink-deep),var(--red-hk));color:white;border:none;cursor:none;font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;padding:1.1rem 3rem;border-radius:60px;box-shadow:0 8px 32px rgba(232,0,61,.25);transition:transform .2s,box-shadow .2s;letter-spacing:.02em;}
-.btn-reconcile:hover{transform:scale(1.05);box-shadow:0 12px 40px rgba(232,0,61,.35);}
-.btn-reconcile:active{transform:scale(.97);}
-.btn-reconcile.clicked{background:linear-gradient(135deg,#43b06b,#2d8a52);box-shadow:0 8px 32px rgba(45,138,82,.3);}
-.success-msg{display:none;margin-top:2rem;background:#fff;border:2px solid #b3e6c8;border-radius:20px;padding:2rem;max-width:480px;margin-left:auto;margin-right:auto;text-align:center;}
-.success-msg.show{display:block;animation:fadeInScale .6s ease forwards;}
-@keyframes fadeInScale{from{opacity:0;transform:scale(.8);}to{opacity:1;transform:scale(1);}}
-.success-msg h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:#2d8a52;margin-bottom:.8rem;}
-.success-msg p{font-size:.95rem;color:#4a7a5a;line-height:1.7;}
+/* DREAMS SECTION */
+.dreams-section{max-width:700px;margin:0 auto 5rem;padding:0 1.5rem;position:relative;z-index:2;}
+.dreams-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1rem;}
+.dream-card{background:#fff;border-radius:24px;border:2px solid var(--pink-mid);padding:2rem 1.8rem;box-shadow:0 8px 40px rgba(200,80,120,.1);opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.dream-card.visible{opacity:1;transform:translateY(0);}
+.dream-card .dream-icon{font-size:2.6rem;margin-bottom:1rem;display:block;}
+.dream-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--pink-dark);margin-bottom:.6rem;}
+.dream-card p{font-size:.88rem;color:var(--text-mid);line-height:1.7;font-weight:300;}
+/* kids illustration inside card */
+.kids-row{display:flex;align-items:flex-end;justify-content:center;gap:1.5rem;margin:1rem 0 .5rem;}
 
-/* CONFETTI */
-.confetti-piece{position:fixed;pointer-events:none;z-index:9990;animation:confettiFall linear forwards;}
-@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
+/* SPAIN HOUSE card */
+.spain-map-wrap{margin:1rem 0 .5rem;border-radius:14px;overflow:hidden;}
+
+/* ENDING SECTION */
+.ending-section{max-width:600px;margin:0 auto 2rem;padding:0 1.5rem;position:relative;z-index:2;text-align:center;}
+.ending-card{background:linear-gradient(160deg,#fff0f5,#ffe8f0);border-radius:28px;padding:3.5rem 2.5rem;border:1.5px solid var(--pink-mid);box-shadow:0 12px 60px rgba(200,80,120,.13);position:relative;overflow:hidden;}
+.ending-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--pink-mid),var(--pink-deep),var(--pink-mid),transparent);}
+.ending-year{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-light);margin-bottom:1.2rem;}
+.ending-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:400;font-style:italic;color:var(--pink-dark);line-height:1.4;margin-bottom:1.5rem;}
+.ending-title span{font-weight:600;}
+.ending-sub{font-size:.95rem;color:var(--text-mid);line-height:1.9;font-weight:300;max-width:440px;margin:0 auto;}
+.ending-hearts{font-size:1.5rem;margin-top:2rem;letter-spacing:.4rem;opacity:.6;}
 
 footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;letter-spacing:.05em;position:relative;z-index:2;}
 
@@ -163,9 +170,9 @@ footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;le
 
   <h1>Pentru tine,<br>cu toată inima mea</h1>
   <p class="tagline">O poveste în momente... și un singur gând</p>
-  <div class="date-badge">30 Aprilie 2025</div>
+  <div class="date-badge">30 Aprilie 2026</div>
 
-  <p class="counter-intro">Povestea noastra a inceput acum...</p>
+  <p class="counter-intro">De când ne-am cunoscut au trecut...</p>
   <div class="counter-box">
     <div class="counter-unit"><div class="counter-num" id="cntD">0</div><div class="counter-label">zile</div></div>
     <div class="counter-unit"><div class="counter-num" id="cntH">00</div><div class="counter-label">ore</div></div>
@@ -273,53 +280,189 @@ footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;le
   </div>
 </section>
 
-<!-- ISTANBUL MAP -->
-<section class="istanbul-section">
-  <div class="istanbul-card">
-    <h3>✈️ Visul nostru: Istanbul</h3>
-    <p>Poate că zborul ăsta ne mai așteaptă undeva, cândva...</p>
-    <svg id="istanbulMap" width="100%" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;">
-      <!-- Sky / Sea -->
-      <rect width="500" height="260" rx="14" fill="#deeef8"/>
-      <!-- Land -->
-      <path d="M0,0 L500,0 L500,110 Q420,90 360,100 Q300,110 260,148 Q230,168 200,158 Q160,148 120,168 Q80,178 40,162 Q20,155 0,158 Z" fill="#c8e0b8"/>
-      <!-- Romania -->
-      <ellipse cx="240" cy="105" rx="38" ry="24" fill="#aad090" stroke="#7ab87a" stroke-width="1.5"/>
-      <text x="240" y="110" text-anchor="middle" font-size="9" fill="#2d6a2d" font-family="Lato,sans-serif" font-weight="700">ROMÂNIA</text>
-      <!-- Black Sea -->
-      <ellipse cx="368" cy="118" rx="62" ry="32" fill="#a8cfe8" opacity=".75"/>
-      <text x="368" y="122" text-anchor="middle" font-size="8" fill="#2a5f8a" font-family="Lato,sans-serif">Marea Neagră</text>
-      <!-- Turkey land -->
-      <path d="M285,148 Q330,136 375,150 Q415,160 450,152 Q472,148 500,155 L500,210 Q460,200 420,192 Q380,182 340,188 Q310,192 285,175 Z" fill="#f0d8b0"/>
-      <!-- Istanbul pulse rings -->
-      <circle cx="358" cy="156" r="18" fill="#e8003d" opacity=".08"/>
-      <circle cx="358" cy="156" r="12" fill="#e8003d" opacity=".12"/>
-      <circle cx="358" cy="156" r="7"  fill="#e8003d" opacity=".3"/>
-      <circle cx="358" cy="156" r="4"  fill="#e8003d"/>
-      <circle cx="358" cy="156" r="2"  fill="white"/>
-      <text x="358" y="176" text-anchor="middle" font-size="9" fill="#8a1a1a" font-family="Lato,sans-serif" font-weight="700">ISTANBUL</text>
-      <!-- Mini mosque silhouette -->
-      <path d="M349,155 L349,148 Q353,143 358,146 Q363,143 367,148 L367,155" fill="none" stroke="#c23b5e" stroke-width="1.2"/>
-      <line x1="353" y1="148" x2="353" y2="142" stroke="#c23b5e" stroke-width=".9"/>
-      <line x1="363" y1="148" x2="363" y2="142" stroke="#c23b5e" stroke-width=".9"/>
-      <!-- Origin dot -->
-      <circle cx="222" cy="108" r="7"  fill="#e8507a" opacity=".25"/>
-      <circle cx="222" cy="108" r="4.5" fill="#e8507a"/>
-      <circle cx="222" cy="108" r="2"  fill="white"/>
-      <text x="212" y="126" font-size="8" fill="#7a4460" font-family="Lato,sans-serif">Noi ♡</text>
-      <!-- Flight path dashed -->
-      <path id="flightPath" d="M222,108 Q258,62 318,104 Q338,120 358,156" fill="none" stroke="#e8507a" stroke-width="1.8" stroke-dasharray="5,4" opacity=".55"/>
-      <!-- Heart along path -->
-      <text x="274" y="68" font-size="13" fill="#e8507a" opacity=".7">♡</text>
-      <!-- Plane -->
-      <g id="planeGroup">
-        <ellipse cx="0" cy="0" rx="11" ry="4.5" fill="white" stroke="#c23b5e" stroke-width="1"/>
-        <path d="M-1,-5 L8,0 L-1,5 Z" fill="#ffc2d4" stroke="#c23b5e" stroke-width=".8"/>
-        <path d="M-11,-4.5 L-7,0 L-11,4.5 Z" fill="#ffc2d4"/>
-        <circle cx="3" cy="0" r="1.8" fill="#a8d4f0"/>
-        <circle cx="-1" cy="0" r="1" fill="#e8d4f0"/>
-      </g>
-    </svg>
+<!-- VISE -->
+<section class="dreams-section">
+  <h2 class="section-title">Visele noastre ♡</h2>
+  <div class="dreams-grid">
+
+    <!-- VIS 1: ISTANBUL -->
+    <div class="dream-card" id="dreamIstanbul">
+      <span class="dream-icon">✈️</span>
+      <h3>Istanbul — primul nostru „undeva"</h3>
+      <p>Vorbeam despre el ca și cum biletele erau deja cumpărate. Bazarul, Bosfor-ul, mirosul de condimente... Tu și eu, pierduți într-un oraș pe care nu-l știam. Poate că zborul ăsta ne mai așteaptă undeva.</p>
+      <svg width="100%" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="border-radius:12px;margin-top:1rem;">
+        <rect width="400" height="200" rx="12" fill="#deeef8"/>
+        <path d="M0,0 L400,0 L400,88 Q335,72 290,80 Q240,88 210,118 Q184,134 160,126 Q128,118 96,134 Q64,142 32,130 L0,126Z" fill="#c8e0b8"/>
+        <ellipse cx="192" cy="84" rx="30" ry="19" fill="#aad090" stroke="#7ab87a" stroke-width="1.2"/>
+        <text x="192" y="88" text-anchor="middle" font-size="8" fill="#2d6a2d" font-family="Lato,sans-serif" font-weight="700">ROMÂNIA</text>
+        <ellipse cx="294" cy="94" rx="50" ry="26" fill="#a8cfe8" opacity=".7"/>
+        <text x="294" y="98" text-anchor="middle" font-size="7" fill="#2a5f8a" font-family="Lato,sans-serif">Marea Neagră</text>
+        <path d="M228,118 Q265,109 300,120 Q332,128 360,122 L400,124 L400,168 Q368,160 336,154 Q272,146 228,140Z" fill="#f0d8b0"/>
+        <circle cx="286" cy="124" r="14" fill="#e8003d" opacity=".08"/>
+        <circle cx="286" cy="124" r="9" fill="#e8003d" opacity=".15"/>
+        <circle cx="286" cy="124" r="5" fill="#e8003d" opacity=".35"/>
+        <circle cx="286" cy="124" r="3" fill="#e8003d"/>
+        <circle cx="286" cy="124" r="1.4" fill="white"/>
+        <text x="286" y="142" text-anchor="middle" font-size="8" fill="#8a1a1a" font-family="Lato,sans-serif" font-weight="700">ISTANBUL</text>
+        <path d="M279,123 L279,117 Q282,113 286,116 Q290,113 293,117 L293,123" fill="none" stroke="#c23b5e" stroke-width="1"/>
+        <line x1="281" y1="117" x2="281" y2="113" stroke="#c23b5e" stroke-width=".8"/>
+        <line x1="291" y1="117" x2="291" y2="113" stroke="#c23b5e" stroke-width=".8"/>
+        <circle cx="178" cy="86" r="5" fill="#e8507a" opacity=".2"/>
+        <circle cx="178" cy="86" r="3.5" fill="#e8507a"/>
+        <circle cx="178" cy="86" r="1.5" fill="white"/>
+        <text x="168" y="100" font-size="7" fill="#7a4460" font-family="Lato,sans-serif">Noi ♡</text>
+        <path id="flightPath" d="M178,86 Q207,50 254,83 Q268,96 286,124" fill="none" stroke="#e8507a" stroke-width="1.5" stroke-dasharray="4,3.5" opacity=".5"/>
+        <text x="218" y="52" font-size="11" fill="#e8507a" opacity=".65">♡</text>
+        <g id="planeGroup">
+          <ellipse cx="0" cy="0" rx="9" ry="3.8" fill="white" stroke="#c23b5e" stroke-width=".9"/>
+          <path d="M-1,-4 L7,0 L-1,4 Z" fill="#ffc2d4" stroke="#c23b5e" stroke-width=".7"/>
+          <path d="M-9,-3.8 L-6,0 L-9,3.8 Z" fill="#ffc2d4"/>
+          <circle cx="2" cy="0" r="1.4" fill="#a8d4f0"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- VIS 2: COPIII -->
+    <div class="dream-card" id="dreamKids">
+      <span class="dream-icon">👶</span>
+      <h3>Doi copii — băiatul mai mare, fetița mai mică</h3>
+      <p>Îl visam pe el — serios, cu ochii tăi, protector cu sora lui. Și pe ea — mică și zgomotoasă, care îl urma peste tot. O familie pe care ne-o imaginam ca pe ceva real.</p>
+      <div class="kids-row">
+        <!-- Boy SVG -->
+        <svg width="70" height="110" viewBox="0 0 70 110" xmlns="http://www.w3.org/2000/svg">
+          <!-- Boy head -->
+          <ellipse cx="35" cy="24" rx="18" ry="19" fill="#fce4c8"/>
+          <!-- Hair -->
+          <path d="M17,18 Q18,8 35,7 Q52,8 53,18 Q50,12 35,12 Q20,12 17,18Z" fill="#5a3010"/>
+          <!-- Eyes -->
+          <ellipse cx="28" cy="23" rx="2.5" ry="2.8" fill="#3a2010"/>
+          <ellipse cx="42" cy="23" rx="2.5" ry="2.8" fill="#3a2010"/>
+          <ellipse cx="29" cy="22" rx="1" ry="1" fill="white"/>
+          <ellipse cx="43" cy="22" rx="1" ry="1" fill="white"/>
+          <!-- Smile -->
+          <path d="M28,32 Q35,37 42,32" fill="none" stroke="#c07050" stroke-width="1.4" stroke-linecap="round"/>
+          <!-- Ear blush -->
+          <ellipse cx="17" cy="25" rx="3" ry="4" fill="#fce4c8" stroke="#f0c4a0" stroke-width=".8"/>
+          <ellipse cx="53" cy="25" rx="3" ry="4" fill="#fce4c8" stroke="#f0c4a0" stroke-width=".8"/>
+          <!-- Body -->
+          <rect x="22" y="43" width="26" height="34" rx="8" fill="#6a9fd8"/>
+          <!-- Legs -->
+          <rect x="23" y="74" width="10" height="28" rx="5" fill="#4a6090"/>
+          <rect x="37" y="74" width="10" height="28" rx="5" fill="#4a6090"/>
+          <!-- Shoes -->
+          <ellipse cx="28" cy="102" rx="8" ry="5" fill="#2a3050"/>
+          <ellipse cx="42" cy="102" rx="8" ry="5" fill="#2a3050"/>
+          <!-- Arms -->
+          <path d="M22,50 Q10,58 12,68" fill="none" stroke="#fce4c8" stroke-width="8" stroke-linecap="round"/>
+          <path d="M48,50 Q60,58 58,68" fill="none" stroke="#fce4c8" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <!-- Girl SVG -->
+        <svg width="60" height="96" viewBox="0 0 60 96" xmlns="http://www.w3.org/2000/svg">
+          <!-- Girl head -->
+          <ellipse cx="30" cy="21" rx="16" ry="17" fill="#fce4c8"/>
+          <!-- Hair with pigtails -->
+          <path d="M14,16 Q15,6 30,5 Q45,6 46,16 Q43,10 30,10 Q17,10 14,16Z" fill="#a04080"/>
+          <ellipse cx="10" cy="16" rx="5" ry="7" fill="#a04080"/>
+          <ellipse cx="50" cy="16" rx="5" ry="7" fill="#a04080"/>
+          <!-- Hair ribbons -->
+          <ellipse cx="10" cy="10" rx="4" ry="3" fill="#e8003d" opacity=".8"/>
+          <ellipse cx="50" cy="10" rx="4" ry="3" fill="#e8003d" opacity=".8"/>
+          <!-- Eyes -->
+          <ellipse cx="24" cy="20" rx="2.2" ry="2.5" fill="#3a2010"/>
+          <ellipse cx="36" cy="20" rx="2.2" ry="2.5" fill="#3a2010"/>
+          <ellipse cx="24.8" cy="19.2" rx=".9" ry=".9" fill="white"/>
+          <ellipse cx="36.8" cy="19.2" rx=".9" ry=".9" fill="white"/>
+          <!-- Smile -->
+          <path d="M24,28 Q30,33 36,28" fill="none" stroke="#c07050" stroke-width="1.3" stroke-linecap="round"/>
+          <!-- Cheeks -->
+          <ellipse cx="18" cy="25" rx="5" ry="3.5" fill="#ffb3c6" opacity=".45"/>
+          <ellipse cx="42" cy="25" rx="5" ry="3.5" fill="#ffb3c6" opacity=".45"/>
+          <!-- Dress body -->
+          <path d="M16,38 L44,38 L48,72 L12,72 Z" fill="#e8507a"/>
+          <!-- Dress collar -->
+          <path d="M22,38 Q30,44 38,38" fill="none" stroke="white" stroke-width="1.5"/>
+          <!-- Legs -->
+          <rect x="18" y="70" width="9" height="20" rx="4.5" fill="#fce4c8"/>
+          <rect x="33" y="70" width="9" height="20" rx="4.5" fill="#fce4c8"/>
+          <!-- Shoes -->
+          <ellipse cx="22" cy="90" rx="7" ry="4" fill="#e8003d"/>
+          <ellipse cx="37" cy="90" rx="7" ry="4" fill="#e8003d"/>
+          <!-- Arms -->
+          <path d="M16,46 Q6,52 8,62" fill="none" stroke="#fce4c8" stroke-width="7" stroke-linecap="round"/>
+          <path d="M44,46 Q54,52 52,62" fill="none" stroke="#fce4c8" stroke-width="7" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- VIS 3: SPANIA -->
+    <div class="dream-card" id="dreamSpain" style="grid-column:1/-1;">
+      <span class="dream-icon">🌊</span>
+      <h3>O casă pe malul mării, în Spania</h3>
+      <p>Undeva unde dimineața miroase a sare și cafea, unde copiii aleargă desculți pe nisip și noi doi stăm pe terasa albă uitându-ne la apus. Ne-am imaginat-o împreună. Și arăta bine.</p>
+      <div class="spain-map-wrap">
+        <svg width="100%" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sky -->
+          <rect width="480" height="200" rx="12" fill="#87ceeb"/>
+          <!-- Sun -->
+          <circle cx="420" cy="40" r="28" fill="#ffd700" opacity=".85"/>
+          <circle cx="420" cy="40" r="20" fill="#ffec6e"/>
+          <!-- Clouds -->
+          <ellipse cx="80" cy="30" rx="30" ry="16" fill="white" opacity=".7"/>
+          <ellipse cx="100" cy="24" rx="22" ry="14" fill="white" opacity=".7"/>
+          <ellipse cx="200" cy="42" rx="24" ry="12" fill="white" opacity=".6"/>
+          <!-- Sea -->
+          <path d="M0,130 Q60,122 120,130 Q180,138 240,130 Q300,122 360,130 Q420,138 480,130 L480,200 L0,200Z" fill="#1a9bd4"/>
+          <path d="M0,145 Q80,138 160,145 Q240,152 320,145 Q400,138 480,145 L480,200 L0,200Z" fill="#0e7ab0" opacity=".5"/>
+          <!-- Waves white tips -->
+          <path d="M0,130 Q30,126 60,130 Q90,134 120,130" fill="none" stroke="white" stroke-width="1.5" opacity=".5"/>
+          <path d="M180,133 Q210,129 240,133 Q270,137 300,133" fill="none" stroke="white" stroke-width="1.5" opacity=".5"/>
+          <!-- Beach sand -->
+          <path d="M0,128 Q120,118 240,122 Q360,126 480,120 L480,148 Q360,142 240,144 Q120,146 0,142Z" fill="#f5dfa0"/>
+          <!-- HOUSE -->
+          <!-- Main wall -->
+          <rect x="170" y="72" width="80" height="58" rx="3" fill="white" stroke="#e0d0c0" stroke-width="1.5"/>
+          <!-- Roof -->
+          <polygon points="162,74 250,74 206,44" fill="#e87050"/>
+          <!-- Chimney -->
+          <rect x="220" y="50" width="10" height="20" rx="2" fill="#c05030"/>
+          <!-- Door -->
+          <rect x="198" y="102" width="16" height="28" rx="4" fill="#c87840"/>
+          <circle cx="211" cy="117" r="1.8" fill="#8a4820"/>
+          <!-- Windows -->
+          <rect x="176" y="82" width="18" height="16" rx="3" fill="#a8d4f4" stroke="#c0e0f8" stroke-width="1"/>
+          <line x1="185" y1="82" x2="185" y2="98" stroke="#c0e0f8" stroke-width=".8"/>
+          <line x1="176" y1="90" x2="194" y2="90" stroke="#c0e0f8" stroke-width=".8"/>
+          <rect x="226" y="82" width="18" height="16" rx="3" fill="#a8d4f4" stroke="#c0e0f8" stroke-width="1"/>
+          <line x1="235" y1="82" x2="235" y2="98" stroke="#c0e0f8" stroke-width=".8"/>
+          <line x1="226" y1="90" x2="244" y2="90" stroke="#c0e0f8" stroke-width=".8"/>
+          <!-- Terrace / patio -->
+          <rect x="155" y="126" width="110" height="10" rx="3" fill="#f0e8d8" stroke="#d8c8a8" stroke-width="1"/>
+          <!-- Terrace rail posts -->
+          <line x1="164" y1="116" x2="164" y2="136" stroke="#d8c8a8" stroke-width="1.5"/>
+          <line x1="180" y1="116" x2="180" y2="136" stroke="#d8c8a8" stroke-width="1.5"/>
+          <line x1="240" y1="116" x2="240" y2="136" stroke="#d8c8a8" stroke-width="1.5"/>
+          <line x1="256" y1="116" x2="256" y2="136" stroke="#d8c8a8" stroke-width="1.5"/>
+          <!-- Palm trees -->
+          <line x1="130" y1="135" x2="128" y2="90" stroke="#7a5020" stroke-width="4" stroke-linecap="round"/>
+          <path d="M128,90 Q108,74 96,80 Q110,78 115,92" fill="#4a9030"/>
+          <path d="M128,90 Q148,72 158,78 Q145,76 142,90" fill="#4a9030"/>
+          <path d="M128,90 Q118,68 122,58 Q126,72 132,80" fill="#4a9030"/>
+          <line x1="335" y1="135" x2="337" y2="94" stroke="#7a5020" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M337,94 Q318,78 308,84 Q320,82 324,95" fill="#4a9030"/>
+          <path d="M337,94 Q355,76 364,82 Q352,80 350,93" fill="#4a9030"/>
+          <!-- Two small figures on terrace (us) -->
+          <circle cx="198" cy="120" r="4" fill="#fce4c8"/>
+          <line x1="198" y1="124" x2="198" y2="134" stroke="#5080c0" stroke-width="2.5"/>
+          <circle cx="210" cy="121" r="3.5" fill="#fce4c8"/>
+          <line x1="210" y1="125" x2="210" y2="134" stroke="#e8507a" stroke-width="2.5"/>
+          <!-- Heart between them -->
+          <text x="203" y="120" font-size="8" fill="#e8003d" text-anchor="middle">♡</text>
+          <!-- Label -->
+          <text x="206" y="192" text-anchor="middle" font-size="9" fill="#1a6a9a" font-family="Lato,sans-serif" font-style="italic">Costa del Sol, España</text>
+        </svg>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -365,17 +508,16 @@ footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;le
   </div>
 </section>
 
-<!-- RECONCILE BUTTON -->
-<section class="reconcile-section">
-  <p>Dacă simți și tu că merită...</p>
-  <button class="btn-reconcile" id="reconcileBtn" onclick="handleReconcile()">
-    💗 Vreau să mă împac cu tine
-  </button>
-  <div class="success-msg" id="successMsg">
-    <div style="font-size:3rem;margin-bottom:.8rem;">🎉💗🌸</div>
-    <h3>Mă faci cel mai fericit om!</h3>
-    <p>Știam că undeva, în inima ta, era și un pic de loc pentru mine. Promit că o să fiu mai bun. Promit că o să fim bine.</p>
-    <p style="margin-top:1rem;font-style:italic;color:#43b06b;">✈️ Istanbul ne mai așteaptă...</p>
+<!-- ENDING -->
+<section class="ending-section">
+  <div class="ending-card" id="endingCard">
+    <div class="ending-year">30 Aprilie 2025 — 30 Aprilie 2026</div>
+    <div class="ending-title">
+      La mulți ani nouă...<br>
+      <span>sau ce a mai rămas din noi.</span>
+    </div>
+    <p class="ending-sub">Un an. O grămadă de momente bune, câteva greșeli, două despărțiri și un vis comun despre Istanbul, doi copii și o casă cu vedere la mare. Nu știu ce o să fie. Dar știu că tot ce am trăit împreună a contat. Și că tu ai contat. Mereu.</p>
+    <div class="ending-hearts">♡ &nbsp; ♡ &nbsp; ♡</div>
   </div>
 </section>
 
@@ -475,29 +617,19 @@ const letterObs=new IntersectionObserver(entries=>{
 },{threshold:.2});
 letterObs.observe(document.getElementById('letterWrap'));
 
-/* CONFETTI */
-function launchConfetti(){
-  const cols=['#e8003d','#ffc2d4','#ff8fab','#c23b5e','#ff4488','#fff0f5','#43b06b','#ffd700'];
-  for(let i=0;i<100;i++){
-    setTimeout(()=>{
-      const c=document.createElement('div');c.className='confetti-piece';
-      c.style.cssText=`left:${Math.random()*100}vw;top:-10px;background:${cols[Math.floor(Math.random()*cols.length)]};width:${Math.random()*10+5}px;height:${Math.random()*10+5}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${Math.random()*2.5+2}s;`;
-      document.body.appendChild(c);setTimeout(()=>c.remove(),5000);
-    },i*25);
-  }
-}
+/* DREAMS + ENDING REVEAL */
+const dreamObs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.15});
+document.querySelectorAll('.dream-card').forEach(d=>dreamObs.observe(d));
 
-/* RECONCILE */
-function handleReconcile(){
-  const btn=document.getElementById('reconcileBtn');
-  const msg=document.getElementById('successMsg');
-  btn.classList.add('clicked');
-  btn.textContent='✓ Mulțumesc din suflet! 💗';
-  btn.disabled=true;
-  launchConfetti();
-  msg.classList.add('show');
-  setTimeout(()=>msg.scrollIntoView({behavior:'smooth',block:'center'}),300);
-}
+const endObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){
+    entries[0].target.style.opacity='1';
+    entries[0].target.style.transform='translateY(0)';
+  }
+},{threshold:.2});
+const ec=document.getElementById('endingCard');
+if(ec){ec.style.cssText+='opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease;';endObs.observe(ec);}
+
 </script>
 </body>
 </html>
