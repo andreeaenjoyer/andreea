@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pentru tine ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink-light:#fff0f5;--pink-mid:#ffc2d4;--pink-deep:#e8507a;
+  --pink-dark:#c23b5e;--red-hk:#e8003d;
+  --text-dark:#3a1a28;--text-mid:#7a4460;--text-light:#c07090;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--pink-light);font-family:'Lato',sans-serif;color:var(--text-dark);overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+#cursor{position:fixed;width:24px;height:24px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);font-size:20px;line-height:1;transition:transform .08s;}
+.click-heart{position:fixed;pointer-events:none;z-index:9998;animation:heartPop .9s ease-out forwards;}
+@keyframes heartPop{0%{transform:translate(-50%,-50%) scale(.5);opacity:1;}60%{transform:translate(-50%,-120%) scale(1.3);opacity:.9;}100%{transform:translate(-50%,-210%) scale(.8);opacity:0;}}
+
+/* PETAL CANVAS */
+#petalCanvas{position:fixed;inset:0;pointer-events:none;z-index:1;}
+
+/* FLOATING HEARTS */
+.hearts-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.heart{position:absolute;animation:floatUp linear infinite;opacity:0;}
+.heart::before{content:'♡';font-size:inherit;color:var(--pink-mid);}
+@keyframes floatUp{0%{transform:translateY(110vh) rotate(-15deg);opacity:0;}10%{opacity:.35;}90%{opacity:.15;}100%{transform:translateY(-10vh) rotate(15deg);opacity:0;}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;background:linear-gradient(160deg,#fff0f5 0%,#ffe4ef 40%,#ffd6e7 100%);z-index:2;}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--pink-light));}
+.kitty-wrap{margin-bottom:2rem;animation:kittyBounce 3s ease-in-out infinite;}
+@keyframes kittyBounce{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-14px) rotate(2deg);}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:600;color:var(--pink-dark);line-height:1.2;margin-bottom:1rem;text-shadow:0 2px 20px rgba(200,60,100,.15);}
+.hero .tagline{font-size:clamp(1rem,2.5vw,1.3rem);color:var(--text-mid);font-weight:300;letter-spacing:.05em;margin-bottom:1.5rem;font-style:italic;}
+
+/* COUNTER */
+.counter-intro{font-size:.88rem;color:var(--text-mid);margin-bottom:.7rem;font-style:italic;}
+.counter-box{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.8rem;}
+.counter-unit{background:white;border:1.5px solid var(--pink-mid);border-radius:16px;padding:.7rem 1rem;text-align:center;box-shadow:0 4px 20px rgba(200,80,120,.1);min-width:72px;}
+.counter-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:600;color:var(--pink-dark);line-height:1;}
+.counter-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-light);margin-top:.2rem;}
+
+.date-badge{display:inline-block;background:var(--red-hk);color:#fff;padding:.5rem 1.5rem;border-radius:50px;font-size:.85rem;letter-spacing:.1em;font-weight:700;text-transform:uppercase;animation:pulse 2s ease-in-out infinite;margin-bottom:1.5rem;}
+@keyframes pulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(232,0,61,.3);}50%{transform:scale(1.04);box-shadow:0 0 0 12px rgba(232,0,61,0);}}
+.scroll-hint{position:absolute;bottom:90px;font-size:.8rem;color:var(--text-light);letter-spacing:.1em;animation:bounceY 2s ease-in-out infinite;}
+@keyframes bounceY{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+/* TIMELINE */
+.timeline-section{padding:4rem 1rem 5rem;position:relative;z-index:2;}
+.section-title{text-align:center;font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--pink-dark);margin-bottom:3rem;}
+.timeline{max-width:700px;margin:0 auto;position:relative;padding:0 1rem;}
+.timeline::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--pink-mid),var(--pink-deep),var(--pink-mid));border-radius:2px;}
+.tl-item{display:flex;align-items:flex-start;margin-bottom:3rem;position:relative;opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease;}
+.tl-item.visible{opacity:1;transform:translateY(0);}
+.tl-item:nth-child(odd){flex-direction:row;}
+.tl-item:nth-child(even){flex-direction:row-reverse;}
+.tl-card{background:#fff;border-radius:20px;padding:1.2rem 1.4rem;width:calc(50% - 36px);box-shadow:0 4px 24px rgba(200,80,120,.1);border:1.5px solid var(--pink-mid);}
+.tl-item:nth-child(odd) .tl-card{margin-right:36px;text-align:right;}
+.tl-item:nth-child(even) .tl-card{margin-left:36px;text-align:left;}
+.tl-dot{position:absolute;left:50%;transform:translateX(-50%);width:40px;height:40px;background:var(--pink-deep);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;border:3px solid #fff;box-shadow:0 0 0 3px var(--pink-mid);z-index:2;flex-shrink:0;}
+.tl-date{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:.35rem;}
+.tl-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem;}
+.tl-text{font-size:.87rem;color:var(--text-mid);line-height:1.6;font-weight:300;}
+.tl-card.sad{border-color:#d4b0be;background:#fff5f8;}
+.tl-card.sorry{border-color:#f0c0d0;background:#fff8fb;}
+.tl-card.happy{border-color:#ffb3c6;background:#fff0f5;}
+.tl-card.special{border-color:var(--pink-deep);background:#fff;}
+
+/* ISTANBUL */
+.istanbul-section{max-width:700px;margin:0 auto 5rem;padding:0 1.5rem;z-index:2;position:relative;}
+.istanbul-card{background:#fff;border-radius:24px;border:2px solid var(--pink-mid);padding:2rem;box-shadow:0 8px 40px rgba(200,80,120,.12);text-align:center;}
+.istanbul-card h3{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--pink-dark);margin-bottom:.5rem;}
+.istanbul-card p{font-size:.9rem;color:var(--text-mid);margin-bottom:1.5rem;font-style:italic;}
+
+/* LETTER */
+.letter-section{max-width:680px;margin:0 auto 4rem;padding:0 1.5rem;position:relative;z-index:2;}
+.letter-wrap{background:#fffafc;border-radius:24px;padding:3rem 2.5rem;border:2px solid var(--pink-mid);box-shadow:0 8px 48px rgba(200,80,120,.12);position:relative;overflow:hidden;}
+.letter-wrap::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--pink-mid),var(--pink-deep),var(--red-hk),var(--pink-deep),var(--pink-mid));}
+.letter-kitty{text-align:center;margin-bottom:1.5rem;}
+.letter-date{text-align:right;font-size:.8rem;letter-spacing:.1em;color:var(--text-light);margin-bottom:1.5rem;font-style:italic;}
+.letter-wrap h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--pink-dark);margin-bottom:1.5rem;font-style:italic;}
+.letter-wrap p{font-size:1rem;line-height:1.85;color:var(--text-mid);margin-bottom:1.2rem;font-weight:300;opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;}
+.letter-wrap p.line-show{opacity:1;transform:translateY(0);}
+.letter-wrap p strong{color:var(--text-dark);font-weight:700;}
+.letter-wrap .sign{margin-top:2rem;font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:var(--pink-dark);text-align:right;}
+.ribbon-line{display:flex;align-items:center;gap:.8rem;margin:1.5rem 0;color:var(--pink-mid);}
+.ribbon-line::before,.ribbon-line::after{content:'';flex:1;height:1px;background:linear-gradient(to right,transparent,var(--pink-mid),transparent);}
+
+/* RECONCILE */
+.reconcile-section{text-align:center;padding:1rem 1rem 5rem;position:relative;z-index:2;}
+.reconcile-section>p{font-size:1rem;color:var(--text-mid);font-style:italic;margin-bottom:1.5rem;}
+.btn-reconcile{display:inline-block;background:linear-gradient(135deg,var(--pink-deep),var(--red-hk));color:white;border:none;cursor:none;font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;padding:1.1rem 3rem;border-radius:60px;box-shadow:0 8px 32px rgba(232,0,61,.25);transition:transform .2s,box-shadow .2s;letter-spacing:.02em;}
+.btn-reconcile:hover{transform:scale(1.05);box-shadow:0 12px 40px rgba(232,0,61,.35);}
+.btn-reconcile:active{transform:scale(.97);}
+.btn-reconcile.clicked{background:linear-gradient(135deg,#43b06b,#2d8a52);box-shadow:0 8px 32px rgba(45,138,82,.3);}
+.success-msg{display:none;margin-top:2rem;background:#fff;border:2px solid #b3e6c8;border-radius:20px;padding:2rem;max-width:480px;margin-left:auto;margin-right:auto;text-align:center;}
+.success-msg.show{display:block;animation:fadeInScale .6s ease forwards;}
+@keyframes fadeInScale{from{opacity:0;transform:scale(.8);}to{opacity:1;transform:scale(1);}}
+.success-msg h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:#2d8a52;margin-bottom:.8rem;}
+.success-msg p{font-size:.95rem;color:#4a7a5a;line-height:1.7;}
+
+/* CONFETTI */
+.confetti-piece{position:fixed;pointer-events:none;z-index:9990;animation:confettiFall linear forwards;}
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
+
+footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;letter-spacing:.05em;position:relative;z-index:2;}
+
+@media(max-width:600px){
+  .timeline::before{left:20px;transform:none;}
+  .tl-item{flex-direction:column !important;padding-left:56px;}
+  .tl-card{width:100% !important;margin:0 !important;text-align:left !important;}
+  .tl-dot{left:0;transform:none;}
+  .letter-wrap{padding:2rem 1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="petalCanvas"></canvas>
+<div class="hearts-bg" id="heartsContainer"></div>
+<div id="cursor">♡</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="kitty-wrap">
+    <svg width="160" height="180" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(80,28)">
+        <ellipse cx="-28" cy="0" rx="26" ry="16" fill="#e8003d" opacity=".95"/>
+        <ellipse cx="-28" cy="0" rx="18" ry="10" fill="#ff3366" opacity=".7"/>
+        <ellipse cx="28" cy="0" rx="26" ry="16" fill="#e8003d" opacity=".95"/>
+        <ellipse cx="28" cy="0" rx="18" ry="10" fill="#ff3366" opacity=".7"/>
+        <ellipse cx="0" cy="0" rx="10" ry="9" fill="#e8003d"/>
+        <ellipse cx="0" cy="0" rx="6" ry="5" fill="#ff4477"/>
+      </g>
+      <ellipse cx="80" cy="105" rx="62" ry="58" fill="white" stroke="#ffc2d4" stroke-width="2"/>
+      <ellipse cx="28" cy="62" rx="18" ry="18" fill="white" stroke="#ffc2d4" stroke-width="2"/>
+      <ellipse cx="132" cy="62" rx="18" ry="18" fill="white" stroke="#ffc2d4" stroke-width="2"/>
+      <ellipse cx="62" cy="97" rx="7" ry="8" fill="#1a1a1a"/>
+      <ellipse cx="98" cy="97" rx="7" ry="8" fill="#1a1a1a"/>
+      <ellipse cx="65" cy="94" rx="2.5" ry="2.5" fill="white"/>
+      <ellipse cx="101" cy="94" rx="2.5" ry="2.5" fill="white"/>
+      <ellipse cx="80" cy="108" rx="5" ry="4" fill="#e8003d"/>
+      <line x1="18" y1="105" x2="62" y2="108" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="18" y1="115" x2="62" y2="112" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="24" y1="96" x2="62" y2="104" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="142" y1="105" x2="98" y2="108" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="142" y1="115" x2="98" y2="112" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="136" y1="96" x2="98" y2="104" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
+      <ellipse cx="52" cy="116" rx="12" ry="8" fill="#ffb3c6" opacity=".5"/>
+      <ellipse cx="108" cy="116" rx="12" ry="8" fill="#ffb3c6" opacity=".5"/>
+      <path d="M36 155 Q80 170 124 155 L130 178 Q80 192 30 178 Z" fill="white" stroke="#ffc2d4" stroke-width="1.5"/>
+      <g transform="translate(80,162)">
+        <ellipse cx="-8" cy="0" rx="8" ry="5" fill="#e8003d"/>
+        <ellipse cx="8" cy="0" rx="8" ry="5" fill="#e8003d"/>
+        <ellipse cx="0" cy="0" rx="4" ry="3.5" fill="#ff3366"/>
+      </g>
+    </svg>
+  </div>
+
+  <h1>Pentru tine,<br>cu toată inima mea</h1>
+  <p class="tagline">O poveste în momente... și un singur gând</p>
+  <div class="date-badge">30 Aprilie 2025</div>
+
+  <p class="counter-intro">Povestea noastra a inceput acum...</p>
+  <div class="counter-box">
+    <div class="counter-unit"><div class="counter-num" id="cntD">0</div><div class="counter-label">zile</div></div>
+    <div class="counter-unit"><div class="counter-num" id="cntH">00</div><div class="counter-label">ore</div></div>
+    <div class="counter-unit"><div class="counter-num" id="cntM">00</div><div class="counter-label">minute</div></div>
+    <div class="counter-unit"><div class="counter-num" id="cntS">00</div><div class="counter-label">secunde</div></div>
+  </div>
+
+  <div class="scroll-hint">↓ derulează ↓</div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <h2 class="section-title">Povestea noastră ♡</h2>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-card happy">
+        <div class="tl-date">30 Aprilie 2025</div>
+        <div class="tl-title">Ne-am cunoscut ✨</div>
+        <div class="tl-text">Ziua în care totul a început. Nu știam atunci că această zi o să conteze atât de mult. Dar a contat enorm.</div>
+      </div>
+      <div class="tl-dot">🌸</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card happy">
+        <div class="tl-date">5 Martie</div>
+        <div class="tl-title">Visul cu Istanbul 🌙</div>
+        <div class="tl-text">Vorbeam despre Istanbul ca și cum era deja rezervat. Eu și tu, undeva departe. Poate că visul ăsta mai are o șansă.</div>
+      </div>
+      <div class="tl-dot">✈️</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card sad">
+        <div class="tl-date">Septembrie</div>
+        <div class="tl-title">Despărțiți...</div>
+        <div class="tl-text">„Să nu complicăm." Am auzit asta și m-a dărâmat. Dar tu aveai dreptatea ta. Eu eram complicat.</div>
+      </div>
+      <div class="tl-dot">🌧️</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card sorry">
+        <div class="tl-date">27 Octombrie — Ziua ta</div>
+        <div class="tl-title">Nu ți-am scris. Tu mi-ai scris.</div>
+        <div class="tl-text">Eram supărat și m-am ascuns în orgoliu. Tu ai ales să fii mai mare decât supărarea. Am fost un bou. Îmi pare rău.</div>
+      </div>
+      <div class="tl-dot">🎂</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card happy">
+        <div class="tl-date">20 Noiembrie</div>
+        <div class="tl-title">Ne-am împăcat 💗</div>
+        <div class="tl-text">Și pentru o clipă am simțit că e bine. Că suntem bine. Că e posibil să fim bine.</div>
+      </div>
+      <div class="tl-dot">💗</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card sad">
+        <div class="tl-date">31 Decembrie 2025</div>
+        <div class="tl-title">New Year, New Us?</div>
+        <div class="tl-text">Am intrat în noul an cu o speranță. Că poate de data asta o să fie altfel. Că o să fim noi.</div>
+      </div>
+      <div class="tl-dot">🎆</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card sad">
+        <div class="tl-date">14 Februarie 2026</div>
+        <div class="tl-title">Un Valentine's Day sec</div>
+        <div class="tl-text">Nu a fost ce ar fi putut fi. Dar ne-am limitat la ce aveam. Uneori și puținul ăla a contat.</div>
+      </div>
+      <div class="tl-dot">🌹</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card sad">
+        <div class="tl-date">14 Martie 2026</div>
+        <div class="tl-title">Despărțirea</div>
+        <div class="tl-text">A durut. Poate că am lăsat să ducă prea departe lucruri care puteau fi rezolvate. Regret asta.</div>
+      </div>
+      <div class="tl-dot">💔</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card sorry">
+        <div class="tl-date">9 Aprilie 2026</div>
+        <div class="tl-title">Contul „beti" — Îmi cer scuze</div>
+        <div class="tl-text">Știu că a arătat urât. Nu a fost pentru control — a fost singurul mod în care știam să mă asigur că ești în siguranță. A fost greșit. Îmi pare rău din suflet.</div>
+      </div>
+      <div class="tl-dot">🙏</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-card special">
+        <div class="tl-date">30 Aprilie 2026</div>
+        <div class="tl-title">Această scrisoare 💌</div>
+        <div class="tl-text">Exact un an. Și eu sunt tot aici, gândindu-mă la tine. Mereu.</div>
+      </div>
+      <div class="tl-dot">💌</div>
+    </div>
+  </div>
+</section>
+
+<!-- ISTANBUL MAP -->
+<section class="istanbul-section">
+  <div class="istanbul-card">
+    <h3>✈️ Visul nostru: Istanbul</h3>
+    <p>Poate că zborul ăsta ne mai așteaptă undeva, cândva...</p>
+    <svg id="istanbulMap" width="100%" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" style="border-radius:16px;">
+      <!-- Sky / Sea -->
+      <rect width="500" height="260" rx="14" fill="#deeef8"/>
+      <!-- Land -->
+      <path d="M0,0 L500,0 L500,110 Q420,90 360,100 Q300,110 260,148 Q230,168 200,158 Q160,148 120,168 Q80,178 40,162 Q20,155 0,158 Z" fill="#c8e0b8"/>
+      <!-- Romania -->
+      <ellipse cx="240" cy="105" rx="38" ry="24" fill="#aad090" stroke="#7ab87a" stroke-width="1.5"/>
+      <text x="240" y="110" text-anchor="middle" font-size="9" fill="#2d6a2d" font-family="Lato,sans-serif" font-weight="700">ROMÂNIA</text>
+      <!-- Black Sea -->
+      <ellipse cx="368" cy="118" rx="62" ry="32" fill="#a8cfe8" opacity=".75"/>
+      <text x="368" y="122" text-anchor="middle" font-size="8" fill="#2a5f8a" font-family="Lato,sans-serif">Marea Neagră</text>
+      <!-- Turkey land -->
+      <path d="M285,148 Q330,136 375,150 Q415,160 450,152 Q472,148 500,155 L500,210 Q460,200 420,192 Q380,182 340,188 Q310,192 285,175 Z" fill="#f0d8b0"/>
+      <!-- Istanbul pulse rings -->
+      <circle cx="358" cy="156" r="18" fill="#e8003d" opacity=".08"/>
+      <circle cx="358" cy="156" r="12" fill="#e8003d" opacity=".12"/>
+      <circle cx="358" cy="156" r="7"  fill="#e8003d" opacity=".3"/>
+      <circle cx="358" cy="156" r="4"  fill="#e8003d"/>
+      <circle cx="358" cy="156" r="2"  fill="white"/>
+      <text x="358" y="176" text-anchor="middle" font-size="9" fill="#8a1a1a" font-family="Lato,sans-serif" font-weight="700">ISTANBUL</text>
+      <!-- Mini mosque silhouette -->
+      <path d="M349,155 L349,148 Q353,143 358,146 Q363,143 367,148 L367,155" fill="none" stroke="#c23b5e" stroke-width="1.2"/>
+      <line x1="353" y1="148" x2="353" y2="142" stroke="#c23b5e" stroke-width=".9"/>
+      <line x1="363" y1="148" x2="363" y2="142" stroke="#c23b5e" stroke-width=".9"/>
+      <!-- Origin dot -->
+      <circle cx="222" cy="108" r="7"  fill="#e8507a" opacity=".25"/>
+      <circle cx="222" cy="108" r="4.5" fill="#e8507a"/>
+      <circle cx="222" cy="108" r="2"  fill="white"/>
+      <text x="212" y="126" font-size="8" fill="#7a4460" font-family="Lato,sans-serif">Noi ♡</text>
+      <!-- Flight path dashed -->
+      <path id="flightPath" d="M222,108 Q258,62 318,104 Q338,120 358,156" fill="none" stroke="#e8507a" stroke-width="1.8" stroke-dasharray="5,4" opacity=".55"/>
+      <!-- Heart along path -->
+      <text x="274" y="68" font-size="13" fill="#e8507a" opacity=".7">♡</text>
+      <!-- Plane -->
+      <g id="planeGroup">
+        <ellipse cx="0" cy="0" rx="11" ry="4.5" fill="white" stroke="#c23b5e" stroke-width="1"/>
+        <path d="M-1,-5 L8,0 L-1,5 Z" fill="#ffc2d4" stroke="#c23b5e" stroke-width=".8"/>
+        <path d="M-11,-4.5 L-7,0 L-11,4.5 Z" fill="#ffc2d4"/>
+        <circle cx="3" cy="0" r="1.8" fill="#a8d4f0"/>
+        <circle cx="-1" cy="0" r="1" fill="#e8d4f0"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section class="letter-section">
+  <div class="letter-wrap" id="letterWrap">
+    <div class="letter-kitty">
+      <svg width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(35,12)">
+          <ellipse cx="-11" cy="0" rx="10" ry="6" fill="#e8003d"/>
+          <ellipse cx="11" cy="0" rx="10" ry="6" fill="#e8003d"/>
+          <ellipse cx="0" cy="0" rx="4" ry="3.5" fill="#ff3366"/>
+        </g>
+        <ellipse cx="35" cy="42" rx="27" ry="25" fill="white" stroke="#ffc2d4" stroke-width="1.5"/>
+        <ellipse cx="13" cy="26" rx="8" ry="8" fill="white" stroke="#ffc2d4" stroke-width="1.5"/>
+        <ellipse cx="57" cy="26" rx="8" ry="8" fill="white" stroke="#ffc2d4" stroke-width="1.5"/>
+        <ellipse cx="27" cy="40" rx="3" ry="3.5" fill="#1a1a1a"/>
+        <ellipse cx="43" cy="40" rx="3" ry="3.5" fill="#1a1a1a"/>
+        <ellipse cx="28.2" cy="38.5" rx="1.1" ry="1.1" fill="white"/>
+        <ellipse cx="44.2" cy="38.5" rx="1.1" ry="1.1" fill="white"/>
+        <ellipse cx="35" cy="46" rx="2.2" ry="1.8" fill="#e8003d"/>
+        <line x1="8" y1="42" x2="27" y2="44" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+        <line x1="8" y1="47" x2="27" y2="47" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+        <line x1="62" y1="42" x2="43" y2="44" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+        <line x1="62" y1="47" x2="43" y2="47" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
+        <ellipse cx="23" cy="50" rx="5" ry="3.5" fill="#ffb3c6" opacity=".5"/>
+        <ellipse cx="47" cy="50" rx="5" ry="3.5" fill="#ffb3c6" opacity=".5"/>
+      </svg>
+    </div>
+    <div class="letter-date">30 Aprilie 2026 — un an de când te-am cunoscut</div>
+    <div class="ribbon-line">♡</div>
+    <h2>Dragă…</h2>
+
+    <p id="lp1">Nu știu exact cum să încep asta, dar știu că trebuie să o fac. Astăzi e exact un an de când ne-am cunoscut. Și tu ești primul gând al zilei mele.</p>
+    <p id="lp2">Am greșit. De mai multe ori, în feluri diferite. Uneori m-am ascuns în orgoliu când ar fi trebuit să fiu prezent. Am tăcut când ar fi trebuit să vorbesc, și am vorbit când ar fi trebuit să tac.</p>
+    <p id="lp3">Am făcut lucruri care au arătat greșit, chiar dacă intenția mea era alta — cum a fost contul acela. <strong>Nu a fost un gest de control. A fost singurul mod în care știam eu să te protejez. Dar înțeleg că nu era corect.</strong></p>
+    <p id="lp4">Ce știu cu siguranță e asta: <strong>nu am încetat nicio secundă să-mi pese de tine.</strong> Nici când eram supărat. Nici în septembrie. Nici după 14 martie.</p>
+    <p id="lp5">Visul cu Istanbul e încă al meu. Și în el, ești tot tu. Mereu tu.</p>
+    <p id="lp6">Nu îți cer să uiți ce s-a întâmplat. Îți cer doar o șansă să-ți arăt că pot fi mai bun. Că am învățat. Că povestea noastră merită un alt capitol — unul mai frumos decât toate cele de dinainte. Dacă nu, atunci măcar să știi că ziua în care te-am cunoscut a fost una dintre cele mai frumoase din viața mea.</p>
+
+    <div class="ribbon-line">♡</div>
+    <div class="sign">Te iubesc.<br>Al tău, mereu ♡</div>
+  </div>
+</section>
+
+<!-- RECONCILE BUTTON -->
+<section class="reconcile-section">
+  <p>Dacă simți și tu că merită...</p>
+  <button class="btn-reconcile" id="reconcileBtn" onclick="handleReconcile()">
+    💗 Vreau să mă împac cu tine
+  </button>
+  <div class="success-msg" id="successMsg">
+    <div style="font-size:3rem;margin-bottom:.8rem;">🎉💗🌸</div>
+    <h3>Mă faci cel mai fericit om!</h3>
+    <p>Știam că undeva, în inima ta, era și un pic de loc pentru mine. Promit că o să fiu mai bun. Promit că o să fim bine.</p>
+    <p style="margin-top:1rem;font-style:italic;color:#43b06b;">✈️ Istanbul ne mai așteaptă...</p>
+  </div>
+</section>
+
+<footer>Creat cu dragoste · 30 Aprilie 2026 ♡ Hello Kitty te iubește și ea</footer>
+
+<script>
+/* CURSOR */
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';});
+document.addEventListener('click',e=>{
+  const h=document.createElement('div');
+  h.className='click-heart';
+  h.textContent=['♡','❤','💗','💕','🌸','✨'][Math.floor(Math.random()*6)];
+  h.style.cssText=`left:${e.clientX}px;top:${e.clientY}px;font-size:${Math.random()*14+16}px;`;
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),900);
+});
+
+/* BG HEARTS */
+const hc=document.getElementById('heartsContainer');
+for(let i=0;i<16;i++){
+  const h=document.createElement('div');h.className='heart';
+  h.style.left=Math.random()*100+'%';
+  h.style.fontSize=(Math.random()*18+10)+'px';
+  h.style.animationDuration=(Math.random()*12+8)+'s';
+  h.style.animationDelay=(Math.random()*10)+'s';
+  hc.appendChild(h);
+}
+
+/* PETAL CANVAS */
+const canvas=document.getElementById('petalCanvas');
+const ctx=canvas.getContext('2d');
+let petals=[];
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resizeCanvas();window.addEventListener('resize',resizeCanvas);
+function makePetal(){
+  return{x:Math.random()*canvas.width,y:-20,size:Math.random()*12+6,vy:Math.random()*1.5+.8,vx:(Math.random()-.5)*1.2,rot:Math.random()*Math.PI*2,rs:(Math.random()-.5)*.06,op:Math.random()*.5+.4,hue:Math.floor(Math.random()*30+330),sw:Math.random()*.03+.01,so:Math.random()*Math.PI*2,age:0};
+}
+for(let i=0;i<28;i++){const p=makePetal();p.y=Math.random()*canvas.height;petals.push(p);}
+function drawPetal(p){
+  ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);ctx.globalAlpha=p.op;
+  ctx.fillStyle=`hsl(${p.hue},90%,80%)`;
+  ctx.beginPath();ctx.ellipse(0,0,p.size*.42,p.size,0,0,Math.PI*2);ctx.fill();ctx.restore();
+}
+function animPetals(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  petals.forEach((p,i)=>{
+    p.age++;p.y+=p.vy;p.x+=p.vx+Math.sin(p.age*p.sw+p.so)*.9;p.rot+=p.rs;
+    drawPetal(p);
+    if(p.y>canvas.height+20)petals[i]=makePetal();
+  });
+  requestAnimationFrame(animPetals);
+}
+animPetals();
+
+/* COUNTER */
+function tick(){
+  const s=new Date('2025-04-30T00:00:00'),n=new Date(),d=Math.floor((n-s)/1000);
+  document.getElementById('cntD').textContent=Math.floor(d/86400);
+  document.getElementById('cntH').textContent=String(Math.floor(d/3600)%24).padStart(2,'0');
+  document.getElementById('cntM').textContent=String(Math.floor(d/60)%60).padStart(2,'0');
+  document.getElementById('cntS').textContent=String(d%60).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+/* PLANE ANIMATION */
+(function(){
+  const plane=document.getElementById('planeGroup');
+  const path=document.getElementById('flightPath');
+  if(!plane||!path)return;
+  const len=path.getTotalLength();
+  let t=0;
+  function step(){
+    t=(t+.0025)%1;
+    const a=path.getPointAtLength(t*len);
+    const b=path.getPointAtLength(Math.min((t+.01)*len,len));
+    const ang=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;
+    plane.setAttribute('transform',`translate(${a.x},${a.y}) rotate(${ang})`);
+    requestAnimationFrame(step);
+  }
+  step();
+})();
+
+/* TIMELINE REVEAL */
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.15});
+document.querySelectorAll('.tl-item').forEach(i=>obs.observe(i));
+
+/* LETTER STAGGER REVEAL */
+let letterStarted=false;
+const letterObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting&&!letterStarted){
+    letterStarted=true;
+    ['lp1','lp2','lp3','lp4','lp5','lp6'].forEach((id,i)=>{
+      setTimeout(()=>{const el=document.getElementById(id);if(el)el.classList.add('line-show');},i*600);
+    });
+  }
+},{threshold:.2});
+letterObs.observe(document.getElementById('letterWrap'));
+
+/* CONFETTI */
+function launchConfetti(){
+  const cols=['#e8003d','#ffc2d4','#ff8fab','#c23b5e','#ff4488','#fff0f5','#43b06b','#ffd700'];
+  for(let i=0;i<100;i++){
+    setTimeout(()=>{
+      const c=document.createElement('div');c.className='confetti-piece';
+      c.style.cssText=`left:${Math.random()*100}vw;top:-10px;background:${cols[Math.floor(Math.random()*cols.length)]};width:${Math.random()*10+5}px;height:${Math.random()*10+5}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-duration:${Math.random()*2.5+2}s;`;
+      document.body.appendChild(c);setTimeout(()=>c.remove(),5000);
+    },i*25);
+  }
+}
+
+/* RECONCILE */
+function handleReconcile(){
+  const btn=document.getElementById('reconcileBtn');
+  const msg=document.getElementById('successMsg');
+  btn.classList.add('clicked');
+  btn.textContent='✓ Mulțumesc din suflet! 💗';
+  btn.disabled=true;
+  launchConfetti();
+  msg.classList.add('show');
+  setTimeout(()=>msg.scrollIntoView({behavior:'smooth',block:'center'}),300);
+}
+</script>
+</body>
+</html>
