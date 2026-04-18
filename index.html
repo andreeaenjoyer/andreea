@@ -113,6 +113,22 @@ body{background:var(--pink-light);font-family:'Lato',sans-serif;color:var(--text
 /* SPAIN HOUSE card */
 .spain-map-wrap{margin:1rem 0 .5rem;border-radius:14px;overflow:hidden;}
 
+/* KISS SECTION */
+.kiss-section{max-width:520px;margin:0 auto 4rem;padding:0 1.5rem;position:relative;z-index:2;text-align:center;}
+.kiss-card{background:linear-gradient(160deg,#1a0828,#2d0a3e);border-radius:28px;padding:2.5rem 2rem;border:1.5px solid #6a2060;box-shadow:0 12px 60px rgba(100,0,80,.35);position:relative;overflow:hidden;}
+.kiss-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#e8003d,#ff8fab,#e8003d,transparent);}
+.kiss-quote-top{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,3.5vw,1.9rem);font-style:italic;color:#ffb3c6;line-height:1.4;margin-bottom:1.2rem;font-weight:400;}
+.kiss-quote-bottom{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,3vw,1.6rem);font-style:italic;color:#ffb3c6;line-height:1.6;margin-top:1.2rem;font-weight:400;}
+.kiss-quote-bottom em{font-weight:600;color:#ff8fab;}
+
+/* WISH / CITAT */
+.wish-section{max-width:560px;margin:0 auto 3rem;padding:0 1.5rem;position:relative;z-index:2;text-align:center;}
+.wish-card{background:white;border-radius:28px;padding:3rem 2.5rem;border:2px solid var(--pink-mid);box-shadow:0 8px 48px rgba(200,80,120,.13);position:relative;overflow:hidden;}
+.wish-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--pink-mid),var(--pink-deep),var(--pink-mid),transparent);}
+.wish-kitty{font-size:2rem;margin-bottom:1.2rem;}
+.wish-text{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,3.5vw,1.55rem);font-style:italic;color:var(--pink-dark);line-height:1.7;font-weight:400;}
+.wish-hearts{margin-top:1.5rem;font-size:1.3rem;letter-spacing:.5rem;color:var(--pink-mid);opacity:.7;}
+
 /* ENDING SECTION */
 .ending-section{max-width:600px;margin:0 auto 2rem;padding:0 1.5rem;position:relative;z-index:2;text-align:center;}
 .ending-card{background:linear-gradient(160deg,#fff0f5,#ffe8f0);border-radius:28px;padding:3.5rem 2.5rem;border:1.5px solid var(--pink-mid);box-shadow:0 12px 60px rgba(200,80,120,.13);position:relative;overflow:hidden;}
@@ -143,36 +159,48 @@ footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;le
 <!-- HERO -->
 <section class="hero">
   <div class="kitty-wrap">
-    <svg width="160" height="180" viewBox="0 0 160 180" xmlns="http://www.w3.org/2000/svg">
-      <g transform="translate(80,28)">
-        <ellipse cx="-28" cy="0" rx="26" ry="16" fill="#e8003d" opacity=".95"/>
-        <ellipse cx="-28" cy="0" rx="18" ry="10" fill="#ff3366" opacity=".7"/>
-        <ellipse cx="28" cy="0" rx="26" ry="16" fill="#e8003d" opacity=".95"/>
-        <ellipse cx="28" cy="0" rx="18" ry="10" fill="#ff3366" opacity=".7"/>
-        <ellipse cx="0" cy="0" rx="10" ry="9" fill="#e8003d"/>
-        <ellipse cx="0" cy="0" rx="6" ry="5" fill="#ff4477"/>
+    <svg width="180" height="200" viewBox="0 0 180 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cap principal - rotund si lat, caracteristic HK -->
+      <circle cx="90" cy="108" r="72" fill="white" stroke="#f5c8d8" stroke-width="2"/>
+      <!-- Urechi triunghiulare cu varful rotunjit - NU cercuri mari -->
+      <path d="M32,60 Q28,30 52,24 Q62,40 56,62Z" fill="white" stroke="#f5c8d8" stroke-width="2"/>
+      <path d="M52,36 Q56,30 60,40 Q58,48 54,54Z" fill="#ffb3c6" opacity=".6"/>
+      <path d="M148,60 Q152,30 128,24 Q118,40 124,62Z" fill="white" stroke="#f5c8d8" stroke-width="2"/>
+      <path d="M128,36 Q124,30 120,40 Q122,48 126,54Z" fill="#ffb3c6" opacity=".6"/>
+      <!-- FUNDA ROSIE pe urechea STANGA - definitorie -->
+      <g transform="translate(46,36) rotate(-10)">
+        <ellipse cx="-16" cy="0" rx="17" ry="10" fill="#e8003d"/>
+        <ellipse cx="-16" cy="0" rx="10" ry="6" fill="#ff1a44" opacity=".5"/>
+        <ellipse cx="16" cy="0" rx="17" ry="10" fill="#e8003d"/>
+        <ellipse cx="16" cy="0" rx="10" ry="6" fill="#ff1a44" opacity=".5"/>
+        <ellipse cx="0" cy="0" rx="8" ry="7" fill="#cc0028"/>
+        <ellipse cx="0" cy="0" rx="5" ry="4" fill="#ff2244"/>
       </g>
-      <ellipse cx="80" cy="105" rx="62" ry="58" fill="white" stroke="#ffc2d4" stroke-width="2"/>
-      <ellipse cx="28" cy="62" rx="18" ry="18" fill="white" stroke="#ffc2d4" stroke-width="2"/>
-      <ellipse cx="132" cy="62" rx="18" ry="18" fill="white" stroke="#ffc2d4" stroke-width="2"/>
-      <ellipse cx="62" cy="97" rx="7" ry="8" fill="#1a1a1a"/>
-      <ellipse cx="98" cy="97" rx="7" ry="8" fill="#1a1a1a"/>
-      <ellipse cx="65" cy="94" rx="2.5" ry="2.5" fill="white"/>
-      <ellipse cx="101" cy="94" rx="2.5" ry="2.5" fill="white"/>
-      <ellipse cx="80" cy="108" rx="5" ry="4" fill="#e8003d"/>
-      <line x1="18" y1="105" x2="62" y2="108" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="18" y1="115" x2="62" y2="112" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="24" y1="96" x2="62" y2="104" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="142" y1="105" x2="98" y2="108" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="142" y1="115" x2="98" y2="112" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="136" y1="96" x2="98" y2="104" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"/>
-      <ellipse cx="52" cy="116" rx="12" ry="8" fill="#ffb3c6" opacity=".5"/>
-      <ellipse cx="108" cy="116" rx="12" ry="8" fill="#ffb3c6" opacity=".5"/>
-      <path d="M36 155 Q80 170 124 155 L130 178 Q80 192 30 178 Z" fill="white" stroke="#ffc2d4" stroke-width="1.5"/>
-      <g transform="translate(80,162)">
+      <!-- Ochi - mici, ovale, negre, plasate sus-centru -->
+      <ellipse cx="72" cy="102" rx="6" ry="7" fill="#111"/>
+      <ellipse cx="108" cy="102" rx="6" ry="7" fill="#111"/>
+      <ellipse cx="74" cy="99" rx="2.2" ry="2.2" fill="white"/>
+      <ellipse cx="110" cy="99" rx="2.2" ry="2.2" fill="white"/>
+      <!-- Nas galben mic - usor spre dreapta fata de centru, intre ochi -->
+      <ellipse cx="95" cy="116" rx="5" ry="4" fill="#e8c020"/>
+      <!-- FARA GURA - caracteristica definitorie Hello Kitty -->
+      <!-- Obraji roz -->
+      <ellipse cx="56" cy="126" rx="16" ry="10" fill="#ffb3c6" opacity=".5"/>
+      <ellipse cx="124" cy="126" rx="16" ry="10" fill="#ffb3c6" opacity=".5"/>
+      <!-- Mustati - 3 de fiecare parte, orizontale -->
+      <line x1="20" y1="114" x2="62" y2="118" stroke="#c0c0c0" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="18" y1="124" x2="62" y2="124" stroke="#c0c0c0" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="20" y1="134" x2="62" y2="130" stroke="#c0c0c0" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="160" y1="114" x2="118" y2="118" stroke="#c0c0c0" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="162" y1="124" x2="118" y2="124" stroke="#c0c0c0" stroke-width="1.4" stroke-linecap="round"/>
+      <line x1="160" y1="134" x2="118" y2="130" stroke="#c0c0c0" stroke-width="1.4" stroke-linecap="round"/>
+      <!-- Corp simplu -->
+      <rect x="45" y="168" width="90" height="30" rx="15" fill="white" stroke="#f5c8d8" stroke-width="1.5"/>
+      <!-- Fundita mica pe corp -->
+      <g transform="translate(90,181)">
         <ellipse cx="-8" cy="0" rx="8" ry="5" fill="#e8003d"/>
         <ellipse cx="8" cy="0" rx="8" ry="5" fill="#e8003d"/>
-        <ellipse cx="0" cy="0" rx="4" ry="3.5" fill="#ff3366"/>
+        <ellipse cx="0" cy="0" rx="4" ry="3.5" fill="#ff2244"/>
       </g>
     </svg>
   </div>
@@ -337,69 +365,166 @@ footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;le
       <h3>Doi copii — baiatul mai mare, fata mai mica</h3>
       <p>Al doilea vis al nostru, sa avem doi copii, prima data baiatul, ca sa fie el mai mare si sa aiba grija de fata noastra, o fata care sa semene cu tine, sa aiba ochii tai si sa fie la fel de frumoasa ca si tine. </p>
       <div class="kids-row">
-        <!-- Boy SVG -->
-        <svg width="70" height="110" viewBox="0 0 70 110" xmlns="http://www.w3.org/2000/svg">
-          <!-- Boy head -->
-          <ellipse cx="35" cy="24" rx="18" ry="19" fill="#fce4c8"/>
-          <!-- Hair -->
-          <path d="M17,18 Q18,8 35,7 Q52,8 53,18 Q50,12 35,12 Q20,12 17,18Z" fill="#5a3010"/>
-          <!-- Eyes -->
-          <ellipse cx="28" cy="23" rx="2.5" ry="2.8" fill="#3a2010"/>
-          <ellipse cx="42" cy="23" rx="2.5" ry="2.8" fill="#3a2010"/>
-          <ellipse cx="29" cy="22" rx="1" ry="1" fill="white"/>
-          <ellipse cx="43" cy="22" rx="1" ry="1" fill="white"/>
-          <!-- Smile -->
-          <path d="M28,32 Q35,37 42,32" fill="none" stroke="#c07050" stroke-width="1.4" stroke-linecap="round"/>
-          <!-- Ear blush -->
-          <ellipse cx="17" cy="25" rx="3" ry="4" fill="#fce4c8" stroke="#f0c4a0" stroke-width=".8"/>
-          <ellipse cx="53" cy="25" rx="3" ry="4" fill="#fce4c8" stroke="#f0c4a0" stroke-width=".8"/>
-          <!-- Body -->
-          <rect x="22" y="43" width="26" height="34" rx="8" fill="#6a9fd8"/>
-          <!-- Legs -->
-          <rect x="23" y="74" width="10" height="28" rx="5" fill="#4a6090"/>
-          <rect x="37" y="74" width="10" height="28" rx="5" fill="#4a6090"/>
-          <!-- Shoes -->
-          <ellipse cx="28" cy="102" rx="8" ry="5" fill="#2a3050"/>
-          <ellipse cx="42" cy="102" rx="8" ry="5" fill="#2a3050"/>
-          <!-- Arms -->
-          <path d="M22,50 Q10,58 12,68" fill="none" stroke="#fce4c8" stroke-width="8" stroke-linecap="round"/>
-          <path d="M48,50 Q60,58 58,68" fill="none" stroke="#fce4c8" stroke-width="8" stroke-linecap="round"/>
+
+        <!-- BOY - smecher, face sala, musculos -->
+        <svg width="100" height="155" viewBox="0 0 100 155" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shadow -->
+          <ellipse cx="50" cy="151" rx="26" ry="5" fill="#f0d0d8" opacity=".35"/>
+          <!-- Pantaloni sport -->
+          <rect x="28" y="98" width="16" height="46" rx="7" fill="#222"/>
+          <rect x="56" y="98" width="16" height="46" rx="7" fill="#222"/>
+          <!-- Dungi laterale pantalon -->
+          <line x1="28" y1="100" x2="28" y2="142" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+          <line x1="72" y1="100" x2="72" y2="142" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+          <!-- Adidasi -->
+          <ellipse cx="36" cy="148" rx="13" ry="6" fill="#e8e8e8"/>
+          <ellipse cx="64" cy="148" rx="13" ry="6" fill="#e8e8e8"/>
+          <ellipse cx="34" cy="146" rx="6" ry="3" fill="#e8003d" opacity=".7"/>
+          <ellipse cx="62" cy="146" rx="6" ry="3" fill="#e8003d" opacity=".7"/>
+          <!-- Tricou maieu - mai tight, arata muschii -->
+          <path d="M24,64 Q22,98 28,100 L72,100 Q78,98 76,64Z" fill="#1a1a1a"/>
+          <!-- Muschii abdomen vizibili pe tricou -->
+          <rect x="35" y="72" width="9" height="7" rx="3" fill="#2a2a2a"/>
+          <rect x="47" y="72" width="9" height="7" rx="3" fill="#2a2a2a"/>
+          <rect x="35" y="82" width="9" height="7" rx="3" fill="#2a2a2a"/>
+          <rect x="47" y="82" width="9" height="7" rx="3" fill="#2a2a2a"/>
+          <rect x="35" y="92" width="9" height="6" rx="3" fill="#2a2a2a"/>
+          <rect x="47" y="92" width="9" height="6" rx="3" fill="#2a2a2a"/>
+          <!-- Brate musculoase -->
+          <path d="M24,64 Q4,72 6,92 Q8,100 14,102" fill="none" stroke="#f5d0a8" stroke-width="16" stroke-linecap="round"/>
+          <path d="M24,64 Q4,72 6,92 Q8,100 14,102" fill="none" stroke="#1a1a1a" stroke-width="13" stroke-linecap="round"/>
+          <!-- Bicep stanga -->
+          <ellipse cx="8" cy="80" rx="9" ry="6" fill="#f5d0a8" opacity=".0"/>
+          <path d="M76,64 Q96,72 94,92 Q92,100 86,102" fill="none" stroke="#f5d0a8" stroke-width="16" stroke-linecap="round"/>
+          <path d="M76,64 Q96,72 94,92 Q92,100 86,102" fill="none" stroke="#1a1a1a" stroke-width="13" stroke-linecap="round"/>
+          <!-- Maini -->
+          <ellipse cx="13" cy="103" rx="8" ry="8" fill="#f5d0a8"/>
+          <ellipse cx="87" cy="103" rx="8" ry="8" fill="#f5d0a8"/>
+          <!-- Gat -->
+          <rect x="40" y="52" width="20" height="16" rx="6" fill="#f5d0a8"/>
+          <!-- Cap - jawline puternica, fata masculina -->
+          <ellipse cx="50" cy="34" rx="28" ry="30" fill="#f5d0a8"/>
+          <!-- Jaw mai patrat -->
+          <path d="M22,38 Q20,54 28,62 Q50,68 72,62 Q80,54 78,38Z" fill="#f5d0a8"/>
+          <!-- Par - tuns scurt, fade pe lateral, frumos -->
+          <path d="M22,24 Q24,6 50,4 Q76,6 78,24 Q74,8 50,8 Q26,8 22,24Z" fill="#2a1a08"/>
+          <!-- Fade lateral -->
+          <path d="M22,24 Q20,32 22,40" fill="none" stroke="#2a1a08" stroke-width="5" stroke-linecap="round"/>
+          <path d="M78,24 Q80,32 78,40" fill="none" stroke="#2a1a08" stroke-width="5" stroke-linecap="round"/>
+          <!-- Par top texturat -->
+          <path d="M30,10 Q40,6 50,8 Q60,6 70,10" fill="none" stroke="#3a2a10" stroke-width="4" stroke-linecap="round"/>
+          <path d="M32,14 Q42,9 50,11 Q58,9 68,14" fill="none" stroke="#3a2a10" stroke-width="3" stroke-linecap="round"/>
+          <!-- Urechi -->
+          <ellipse cx="22" cy="36" rx="5" ry="6" fill="#f5d0a8"/>
+          <ellipse cx="78" cy="36" rx="5" ry="6" fill="#f5d0a8"/>
+          <!-- Sprancene groase, expresive -->
+          <path d="M30,22 Q38,18 44,22" fill="none" stroke="#2a1a08" stroke-width="3" stroke-linecap="round"/>
+          <path d="M56,22 Q62,18 70,22" fill="none" stroke="#2a1a08" stroke-width="3" stroke-linecap="round"/>
+          <!-- Ochi - verzi/aluniti, expresivi -->
+          <ellipse cx="37" cy="30" rx="6" ry="6.5" fill="#1a1208"/>
+          <ellipse cx="63" cy="30" rx="6" ry="6.5" fill="#1a1208"/>
+          <ellipse cx="37" cy="30" rx="4" ry="4.5" fill="#3a5020"/>
+          <ellipse cx="63" cy="30" rx="4" ry="4.5" fill="#3a5020"/>
+          <ellipse cx="39" cy="27.5" rx="2" ry="2" fill="white"/>
+          <ellipse cx="65" cy="27.5" rx="2" ry="2" fill="white"/>
+          <!-- Nas drept, mascul -->
+          <path d="M48,36 Q46,44 42,46 Q50,48 58,46 Q54,44 52,36Z" fill="#e8b888" opacity=".5"/>
+          <!-- Zambet cu dinti - cool smile -->
+          <path d="M36,50 Q50,60 64,50" fill="none" stroke="#c07050" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M38,51 Q50,58 62,51" fill="white" stroke="white" stroke-width="1" opacity=".5"/>
+          <!-- Gropit barbie -->
+          <circle cx="50" cy="57" r="1.5" fill="#e8a878" opacity=".5"/>
+          <!-- Cheeks subtile -->
+          <ellipse cx="26" cy="42" rx="7" ry="5" fill="#f0a890" opacity=".25"/>
+          <ellipse cx="74" cy="42" rx="7" ry="5" fill="#f0a890" opacity=".25"/>
+          <!-- Lant la gat -->
+          <path d="M40,52 Q50,56 60,52" fill="none" stroke="#d4a830" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <!-- Girl SVG -->
-        <svg width="60" height="96" viewBox="0 0 60 96" xmlns="http://www.w3.org/2000/svg">
-          <!-- Girl head -->
-          <ellipse cx="30" cy="21" rx="16" ry="17" fill="#fce4c8"/>
-          <!-- Hair with pigtails -->
-          <path d="M14,16 Q15,6 30,5 Q45,6 46,16 Q43,10 30,10 Q17,10 14,16Z" fill="#a04080"/>
-          <ellipse cx="10" cy="16" rx="5" ry="7" fill="#a04080"/>
-          <ellipse cx="50" cy="16" rx="5" ry="7" fill="#a04080"/>
-          <!-- Hair ribbons -->
-          <ellipse cx="10" cy="10" rx="4" ry="3" fill="#e8003d" opacity=".8"/>
-          <ellipse cx="50" cy="10" rx="4" ry="3" fill="#e8003d" opacity=".8"/>
-          <!-- Eyes -->
-          <ellipse cx="24" cy="20" rx="2.2" ry="2.5" fill="#3a2010"/>
-          <ellipse cx="36" cy="20" rx="2.2" ry="2.5" fill="#3a2010"/>
-          <ellipse cx="24.8" cy="19.2" rx=".9" ry=".9" fill="white"/>
-          <ellipse cx="36.8" cy="19.2" rx=".9" ry=".9" fill="white"/>
-          <!-- Smile -->
-          <path d="M24,28 Q30,33 36,28" fill="none" stroke="#c07050" stroke-width="1.3" stroke-linecap="round"/>
-          <!-- Cheeks -->
-          <ellipse cx="18" cy="25" rx="5" ry="3.5" fill="#ffb3c6" opacity=".45"/>
-          <ellipse cx="42" cy="25" rx="5" ry="3.5" fill="#ffb3c6" opacity=".45"/>
-          <!-- Dress body -->
-          <path d="M16,38 L44,38 L48,72 L12,72 Z" fill="#e8507a"/>
-          <!-- Dress collar -->
-          <path d="M22,38 Q30,44 38,38" fill="none" stroke="white" stroke-width="1.5"/>
-          <!-- Legs -->
-          <rect x="18" y="70" width="9" height="20" rx="4.5" fill="#fce4c8"/>
-          <rect x="33" y="70" width="9" height="20" rx="4.5" fill="#fce4c8"/>
-          <!-- Shoes -->
-          <ellipse cx="22" cy="90" rx="7" ry="4" fill="#e8003d"/>
-          <ellipse cx="37" cy="90" rx="7" ry="4" fill="#e8003d"/>
-          <!-- Arms -->
-          <path d="M16,46 Q6,52 8,62" fill="none" stroke="#fce4c8" stroke-width="7" stroke-linecap="round"/>
-          <path d="M44,46 Q54,52 52,62" fill="none" stroke="#fce4c8" stroke-width="7" stroke-linecap="round"/>
+
+        <!-- GIRL - bruneta cool, top, pantaloni scurti, ochelari de soare -->
+        <svg width="85" height="155" viewBox="0 0 85 155" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shadow -->
+          <ellipse cx="42" cy="151" rx="22" ry="5" fill="#f0d0d8" opacity=".35"/>
+          <!-- Pantaloni scurti denim -->
+          <path d="M20,96 Q18,122 24,126 L38,126 L38,96Z" fill="#4a6090"/>
+          <path d="M64,96 Q66,122 60,126 L46,126 L46,96Z" fill="#4a6090"/>
+          <!-- Denim texture -->
+          <line x1="22" y1="100" x2="36" y2="100" stroke="white" stroke-width=".8" opacity=".3"/>
+          <line x1="22" y1="106" x2="36" y2="106" stroke="white" stroke-width=".8" opacity=".3"/>
+          <line x1="48" y1="100" x2="62" y2="100" stroke="white" stroke-width=".8" opacity=".3"/>
+          <line x1="48" y1="106" x2="62" y2="106" stroke="white" stroke-width=".8" opacity=".3"/>
+          <!-- Curea -->
+          <rect x="20" y="93" width="46" height="6" rx="3" fill="#3a2a10"/>
+          <rect x="38" y="91" width="10" height="10" rx="2" fill="#c8a030"/>
+          <!-- Picioare -->
+          <rect x="22" y="122" width="14" height="24" rx="6" fill="#f0c8a0"/>
+          <rect x="49" y="122" width="14" height="24" rx="6" fill="#f0c8a0"/>
+          <!-- Sandale / adidasi mici -->
+          <ellipse cx="29" cy="149" rx="12" ry="5" fill="white" stroke="#ddd" stroke-width="1"/>
+          <ellipse cx="56" cy="149" rx="12" ry="5" fill="white" stroke="#ddd" stroke-width="1"/>
+          <rect x="22" y="144" width="14" height="4" rx="2" fill="#e8507a"/>
+          <rect x="49" y="144" width="14" height="4" rx="2" fill="#e8507a"/>
+          <!-- Crop top trendy -->
+          <path d="M20,62 Q18,94 20,96 L64,96 Q66,94 65,62Z" fill="#e8507a"/>
+          <!-- Top detalii - mica dungulita -->
+          <line x1="20" y1="78" x2="65" y2="78" stroke="#c82050" stroke-width="1" opacity=".5"/>
+          <!-- Crop la mijloc - burtica -->
+          <ellipse cx="42" cy="60" rx="20" ry="5" fill="#f0c8a0"/>
+          <!-- Brate subtiri, feminine -->
+          <path d="M20,68 Q4,76 6,94" fill="none" stroke="#f0c8a0" stroke-width="9" stroke-linecap="round"/>
+          <path d="M65,68 Q80,76 79,94" fill="none" stroke="#f0c8a0" stroke-width="9" stroke-linecap="round"/>
+          <!-- Maini -->
+          <ellipse cx="6" cy="95" rx="6" ry="6" fill="#f0c8a0"/>
+          <ellipse cx="79" cy="95" rx="6" ry="6" fill="#f0c8a0"/>
+          <!-- Gat -->
+          <rect x="35" y="50" width="16" height="14" rx="5" fill="#f0c8a0"/>
+          <!-- Cap -->
+          <ellipse cx="42" cy="30" rx="24" ry="26" fill="#f0c8a0"/>
+          <!-- Par lung brunet - drept, frumos, modern -->
+          <path d="M18,26 Q20,6 42,4 Q64,6 66,26 Q62,8 42,8 Q22,8 18,26Z" fill="#2a1808"/>
+          <!-- Par lateral stanga lung si drept -->
+          <path d="M18,26 Q14,50 16,80 Q18,90 22,92" fill="none" stroke="#2a1808" stroke-width="10" stroke-linecap="round"/>
+          <!-- Par lateral dreapta -->
+          <path d="M66,26 Q70,50 68,80 Q66,90 62,92" fill="none" stroke="#2a1808" stroke-width="10" stroke-linecap="round"/>
+          <!-- Highligts par -->
+          <path d="M20,30 Q18,55 20,80" fill="none" stroke="#5a3820" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+          <path d="M64,30 Q66,55 64,80" fill="none" stroke="#5a3820" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+          <!-- Urechi -->
+          <ellipse cx="18" cy="30" rx="5" ry="6" fill="#f0c8a0"/>
+          <ellipse cx="66" cy="30" rx="5" ry="6" fill="#f0c8a0"/>
+          <!-- Cercei mici -->
+          <circle cx="18" cy="33" r="3" fill="#d4a830"/>
+          <circle cx="66" cy="33" r="3" fill="#d4a830"/>
+          <!-- OCHELARI DE SOARE - cool, oversized -->
+          <rect x="18" y="22" width="22" height="13" rx="6" fill="#111" opacity=".85"/>
+          <rect x="44" y="22" width="22" height="13" rx="6" fill="#111" opacity=".85"/>
+          <!-- Rama ochelari -->
+          <rect x="18" y="22" width="22" height="13" rx="6" fill="none" stroke="#333" stroke-width="2"/>
+          <rect x="44" y="22" width="22" height="13" rx="6" fill="none" stroke="#333" stroke-width="2"/>
+          <!-- Punte ochelari -->
+          <line x1="40" y1="27" x2="44" y2="27" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+          <!-- Bratele ochelari -->
+          <line x1="18" y1="27" x2="13" y2="26" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+          <line x1="66" y1="27" x2="71" y2="26" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+          <!-- Reflexie pe ochelari -->
+          <path d="M21,25 Q26,23 30,25" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
+          <path d="M47,25 Q52,23 56,25" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
+          <!-- Sprancene SEPARATE, frumoase, arcuite (deasupra ochelarilor) -->
+          <path d="M20,20 Q29,16 38,20" fill="none" stroke="#2a1808" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M46,20 Q55,16 64,20" fill="none" stroke="#2a1808" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Nas mic -->
+          <ellipse cx="42" cy="40" rx="3" ry="2.2" fill="#e0a878" opacity=".5"/>
+          <!-- Gura - lipstick roz -->
+          <path d="M33,47 Q42,54 51,47" fill="#e8507a"/>
+          <path d="M34,48 Q42,52 50,48" fill="#ff7090"/>
+          <!-- Cheeks roz frumos -->
+          <ellipse cx="24" cy="42" rx="7" ry="4.5" fill="#ffb3c6" opacity=".4"/>
+          <ellipse cx="60" cy="42" rx="7" ry="4.5" fill="#ffb3c6" opacity=".4"/>
+          <!-- Colier subtire -->
+          <path d="M34,52 Q42,56 50,52" fill="none" stroke="#d4a830" stroke-width="1" stroke-linecap="round"/>
+          <circle cx="42" cy="55" r="2" fill="#d4a830"/>
         </svg>
+
       </div>
     </div>
 
@@ -410,48 +535,33 @@ footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;le
       <p>Stii cum ne ziceam ca vrem sa ne mutam in alta tara, pentru ca Romania e o tara de cacat, si ne imaginam in Spania sa avem o casa pe malul marii, si sa fim noi doi, impreuna cu baiatul si fata noastra.</p>
       <div class="spain-map-wrap">
         <svg width="100%" viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
-          <!-- Sky -->
           <rect width="480" height="200" rx="12" fill="#87ceeb"/>
-          <!-- Sun -->
           <circle cx="420" cy="40" r="28" fill="#ffd700" opacity=".85"/>
           <circle cx="420" cy="40" r="20" fill="#ffec6e"/>
-          <!-- Clouds -->
           <ellipse cx="80" cy="30" rx="30" ry="16" fill="white" opacity=".7"/>
           <ellipse cx="100" cy="24" rx="22" ry="14" fill="white" opacity=".7"/>
           <ellipse cx="200" cy="42" rx="24" ry="12" fill="white" opacity=".6"/>
-          <!-- Sea -->
           <path d="M0,130 Q60,122 120,130 Q180,138 240,130 Q300,122 360,130 Q420,138 480,130 L480,200 L0,200Z" fill="#1a9bd4"/>
           <path d="M0,145 Q80,138 160,145 Q240,152 320,145 Q400,138 480,145 L480,200 L0,200Z" fill="#0e7ab0" opacity=".5"/>
-          <!-- Waves white tips -->
           <path d="M0,130 Q30,126 60,130 Q90,134 120,130" fill="none" stroke="white" stroke-width="1.5" opacity=".5"/>
           <path d="M180,133 Q210,129 240,133 Q270,137 300,133" fill="none" stroke="white" stroke-width="1.5" opacity=".5"/>
-          <!-- Beach sand -->
           <path d="M0,128 Q120,118 240,122 Q360,126 480,120 L480,148 Q360,142 240,144 Q120,146 0,142Z" fill="#f5dfa0"/>
-          <!-- HOUSE -->
-          <!-- Main wall -->
           <rect x="170" y="72" width="80" height="58" rx="3" fill="white" stroke="#e0d0c0" stroke-width="1.5"/>
-          <!-- Roof -->
           <polygon points="162,74 250,74 206,44" fill="#e87050"/>
-          <!-- Chimney -->
           <rect x="220" y="50" width="10" height="20" rx="2" fill="#c05030"/>
-          <!-- Door -->
           <rect x="198" y="102" width="16" height="28" rx="4" fill="#c87840"/>
           <circle cx="211" cy="117" r="1.8" fill="#8a4820"/>
-          <!-- Windows -->
           <rect x="176" y="82" width="18" height="16" rx="3" fill="#a8d4f4" stroke="#c0e0f8" stroke-width="1"/>
           <line x1="185" y1="82" x2="185" y2="98" stroke="#c0e0f8" stroke-width=".8"/>
           <line x1="176" y1="90" x2="194" y2="90" stroke="#c0e0f8" stroke-width=".8"/>
           <rect x="226" y="82" width="18" height="16" rx="3" fill="#a8d4f4" stroke="#c0e0f8" stroke-width="1"/>
           <line x1="235" y1="82" x2="235" y2="98" stroke="#c0e0f8" stroke-width=".8"/>
           <line x1="226" y1="90" x2="244" y2="90" stroke="#c0e0f8" stroke-width=".8"/>
-          <!-- Terrace / patio -->
           <rect x="155" y="126" width="110" height="10" rx="3" fill="#f0e8d8" stroke="#d8c8a8" stroke-width="1"/>
-          <!-- Terrace rail posts -->
           <line x1="164" y1="116" x2="164" y2="136" stroke="#d8c8a8" stroke-width="1.5"/>
           <line x1="180" y1="116" x2="180" y2="136" stroke="#d8c8a8" stroke-width="1.5"/>
           <line x1="240" y1="116" x2="240" y2="136" stroke="#d8c8a8" stroke-width="1.5"/>
           <line x1="256" y1="116" x2="256" y2="136" stroke="#d8c8a8" stroke-width="1.5"/>
-          <!-- Palm trees -->
           <line x1="130" y1="135" x2="128" y2="90" stroke="#7a5020" stroke-width="4" stroke-linecap="round"/>
           <path d="M128,90 Q108,74 96,80 Q110,78 115,92" fill="#4a9030"/>
           <path d="M128,90 Q148,72 158,78 Q145,76 142,90" fill="#4a9030"/>
@@ -459,15 +569,102 @@ footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;le
           <line x1="335" y1="135" x2="337" y2="94" stroke="#7a5020" stroke-width="3.5" stroke-linecap="round"/>
           <path d="M337,94 Q318,78 308,84 Q320,82 324,95" fill="#4a9030"/>
           <path d="M337,94 Q355,76 364,82 Q352,80 350,93" fill="#4a9030"/>
-          <!-- Two small figures on terrace (us) -->
           <circle cx="198" cy="120" r="4" fill="#fce4c8"/>
           <line x1="198" y1="124" x2="198" y2="134" stroke="#5080c0" stroke-width="2.5"/>
           <circle cx="210" cy="121" r="3.5" fill="#fce4c8"/>
           <line x1="210" y1="125" x2="210" y2="134" stroke="#e8507a" stroke-width="2.5"/>
-          <!-- Heart between them -->
           <text x="203" y="120" font-size="8" fill="#e8003d" text-anchor="middle">♡</text>
-          <!-- Label -->
           <text x="206" y="192" text-anchor="middle" font-size="9" fill="#1a6a9a" font-family="Lato,sans-serif" font-style="italic">Barcelona, Spania</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- VIS 4: CASATORIA -->
+    <div class="dream-card" id="dreamWedding" style="grid-column:1/-1;">
+      <span class="dream-icon">💍</span>
+      <h3>Casatoria — doua nunti, o singura poveste</h3>
+      <p>Visam sa ne casatorim si sa avem doua nunti — una in Romania si una in Moldova, pentru ca amandoi sa fie alaturi de noi in ziua cea mai frumoasa din viata noastra. O nunta nu era de ajuns pentru noi.</p>
+      <div class="spain-map-wrap">
+        <svg width="100%" viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sky gradient -->
+          <rect width="520" height="210" rx="14" fill="#fff5f9"/>
+          <!-- Subtle clouds -->
+          <ellipse cx="80" cy="30" rx="35" ry="16" fill="#ffe0ec" opacity=".6"/>
+          <ellipse cx="104" cy="24" rx="24" ry="13" fill="#ffe0ec" opacity=".5"/>
+          <ellipse cx="400" cy="26" rx="30" ry="14" fill="#ffe0ec" opacity=".5"/>
+          <ellipse cx="424" cy="20" rx="22" ry="12" fill="#ffe0ec" opacity=".4"/>
+
+          <!-- ===== NUNTA ROMANIA - stanga ===== -->
+          <!-- Church Romania -->
+          <!-- Turn principal -->
+          <rect x="60" y="90" width="70" height="90" rx="4" fill="white" stroke="#d8b0c0" stroke-width="1.5"/>
+          <!-- Acoperis turn -->
+          <polygon points="55,92 135,92 95,55" fill="#c23b5e"/>
+          <!-- Cruce -->
+          <line x1="95" y1="44" x2="95" y2="55" stroke="#c23b5e" stroke-width="3"/>
+          <line x1="90" y1="48" x2="100" y2="48" stroke="#c23b5e" stroke-width="3"/>
+          <!-- Usa arcuita -->
+          <path d="M80,180 L80,152 Q95,142 110,152 L110,180Z" fill="#c87840"/>
+          <!-- Ferestre arcuite -->
+          <path d="M68,120 L68,108 Q76,102 84,108 L84,120Z" fill="#a8d4f4" stroke="#c0e0f8" stroke-width="1"/>
+          <path d="M106,120 L106,108 Q114,102 122,108 L122,120Z" fill="#a8d4f4" stroke="#c0e0f8" stroke-width="1"/>
+          <!-- Ferestre rotunde sus -->
+          <circle cx="95" cy="78" r="8" fill="#a8d4f4" stroke="#c0e0f8" stroke-width="1"/>
+          <!-- Flag Romania - 3 benzi verticale -->
+          <rect x="128" y="62" width="7" height="18" fill="#002B7F"/>
+          <rect x="135" y="62" width="7" height="18" fill="#FCD116"/>
+          <rect x="142" y="62" width="7" height="18" fill="#CE1126"/>
+          <line x1="148" y1="50" x2="148" y2="80" stroke="#888" stroke-width="1.5"/>
+          <!-- Label Romania -->
+          <text x="95" y="200" text-anchor="middle" font-family="Lato,sans-serif" font-size="10" fill="#c23b5e" font-weight="700">🇷🇴 România</text>
+
+          <!-- ===== SEPARATOR central ===== -->
+          <line x1="260" y1="50" x2="260" y2="185" stroke="#f0c0d0" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <!-- Verighete in centru -->
+          <circle cx="248" cy="110" r="16" fill="none" stroke="#d4a830" stroke-width="5"/>
+          <circle cx="272" cy="110" r="16" fill="none" stroke="#d4a830" stroke-width="5"/>
+          <!-- Inima sus in centru -->
+          <text x="260" y="75" text-anchor="middle" font-size="22" fill="#e8003d">❤</text>
+          <!-- Text centru -->
+          <text x="260" y="150" text-anchor="middle" font-family="Playfair Display,serif" font-size="9" fill="#c23b5e" font-style="italic">noi doi</text>
+          <text x="260" y="163" text-anchor="middle" font-family="Playfair Display,serif" font-size="9" fill="#c23b5e" font-style="italic">pentru totdeauna</text>
+
+          <!-- ===== NUNTA MOLDOVA - dreapta ===== -->
+          <!-- Church Moldova - stil diferit, orthodox cu turle -->
+          <!-- Corp biserica -->
+          <rect x="390" y="95" width="70" height="85" rx="4" fill="white" stroke="#d8b0c0" stroke-width="1.5"/>
+          <!-- Turla principala -->
+          <ellipse cx="425" cy="72" rx="18" ry="12" fill="#e8d0a0"/>
+          <path d="M407,76 L407,95 L443,95 L443,76Z" fill="#e8d0a0" stroke="#d8b0c0" stroke-width="1"/>
+          <!-- Varful turlei bulb -->
+          <ellipse cx="425" cy="60" rx="10" ry="14" fill="#c8a830"/>
+          <line x1="425" y1="46" x2="425" y2="55" stroke="#888" stroke-width="2"/>
+          <line x1="421" y1="50" x2="429" y2="50" stroke="#888" stroke-width="2"/>
+          <!-- Doua turle mici laterale -->
+          <ellipse cx="400" cy="84" rx="9" ry="6" fill="#e8d0a0"/>
+          <ellipse cx="400" cy="76" rx="5" ry="8" fill="#c8a830"/>
+          <ellipse cx="450" cy="84" rx="9" ry="6" fill="#e8d0a0"/>
+          <ellipse cx="450" cy="76" rx="5" ry="8" fill="#c8a830"/>
+          <!-- Usa -->
+          <path d="M410,180 L410,158 Q425,148 440,158 L440,180Z" fill="#c87840"/>
+          <!-- Ferestre -->
+          <path d="M396,128 L396,116 Q404,110 412,116 L412,128Z" fill="#a8d4f4" stroke="#c0e0f8" stroke-width="1"/>
+          <path d="M448,128 L448,116 Q456,110 464,116 L464,128Z" fill="#a8d4f4" stroke="#c0e0f8" stroke-width="1"/>
+          <!-- Flag Moldova -->
+          <rect x="460" y="66" width="7" height="18" fill="#003DA5"/>
+          <rect x="467" y="66" width="7" height="18" fill="#FFD200"/>
+          <rect x="474" y="66" width="7" height="18" fill="#CC0001"/>
+          <line x1="480" y1="54" x2="480" y2="84" stroke="#888" stroke-width="1.5"/>
+          <!-- Label Moldova -->
+          <text x="425" y="200" text-anchor="middle" font-family="Lato,sans-serif" font-size="10" fill="#c23b5e" font-weight="700">🇲🇩 Moldova</text>
+
+          <!-- Flori decorative jos -->
+          <circle cx="180" cy="188" r="4" fill="#e8507a" opacity=".6"/>
+          <circle cx="192" cy="185" r="3" fill="#ffb3c6" opacity=".5"/>
+          <circle cx="200" cy="189" r="4" fill="#e8507a" opacity=".5"/>
+          <circle cx="310" cy="188" r="4" fill="#e8507a" opacity=".6"/>
+          <circle cx="322" cy="185" r="3" fill="#ffb3c6" opacity=".5"/>
+          <circle cx="330" cy="189" r="4" fill="#e8507a" opacity=".5"/>
         </svg>
       </div>
     </div>
@@ -479,26 +676,32 @@ footer{text-align:center;padding:2rem;color:var(--text-light);font-size:.8rem;le
 <section class="letter-section">
   <div class="letter-wrap" id="letterWrap">
     <div class="letter-kitty">
-      <svg width="70" height="70" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
-        <g transform="translate(35,12)">
-          <ellipse cx="-11" cy="0" rx="10" ry="6" fill="#e8003d"/>
-          <ellipse cx="11" cy="0" rx="10" ry="6" fill="#e8003d"/>
-          <ellipse cx="0" cy="0" rx="4" ry="3.5" fill="#ff3366"/>
+      <!-- Hello Kitty mica, corecta -->
+      <svg width="80" height="88" viewBox="0 0 80 88" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="18" cy="24" rx="11" ry="11" fill="white" stroke="#f0c0d0" stroke-width="1.5"/>
+        <ellipse cx="18" cy="24" rx="6" ry="6" fill="#ffb3c6" opacity=".4"/>
+        <ellipse cx="62" cy="24" rx="11" ry="11" fill="white" stroke="#f0c0d0" stroke-width="1.5"/>
+        <ellipse cx="62" cy="24" rx="6" ry="6" fill="#ffb3c6" opacity=".4"/>
+        <rect x="8" y="18" width="64" height="56" rx="20" fill="white" stroke="#f0c0d0" stroke-width="1.5"/>
+        <ellipse cx="30" cy="44" rx="4" ry="4.5" fill="#1a0a0a"/>
+        <ellipse cx="50" cy="44" rx="4" ry="4.5" fill="#1a0a0a"/>
+        <ellipse cx="31.5" cy="42" rx="1.5" ry="1.5" fill="white"/>
+        <ellipse cx="51.5" cy="42" rx="1.5" ry="1.5" fill="white"/>
+        <ellipse cx="42" cy="50" rx="3.5" ry="2.8" fill="#e8c020"/>
+        <ellipse cx="22" cy="54" rx="9" ry="6" fill="#ffb3c6" opacity=".4"/>
+        <ellipse cx="58" cy="54" rx="9" ry="6" fill="#ffb3c6" opacity=".4"/>
+        <line x1="8" y1="48" x2="27" y2="51" stroke="#bbb" stroke-width="1" stroke-linecap="round"/>
+        <line x1="8" y1="54" x2="27" y2="53" stroke="#bbb" stroke-width="1" stroke-linecap="round"/>
+        <line x1="72" y1="48" x2="53" y2="51" stroke="#bbb" stroke-width="1" stroke-linecap="round"/>
+        <line x1="72" y1="54" x2="53" y2="53" stroke="#bbb" stroke-width="1" stroke-linecap="round"/>
+        <!-- funda stanga -->
+        <g transform="translate(21,20)">
+          <ellipse cx="-9" cy="-1" rx="10" ry="6.5" fill="#e8003d"/>
+          <ellipse cx="9" cy="-1" rx="10" ry="6.5" fill="#e8003d"/>
+          <ellipse cx="0" cy="-1" rx="4.5" ry="4" fill="#cc0030"/>
+          <ellipse cx="0" cy="-1" rx="2.8" ry="2.5" fill="#ff2244"/>
         </g>
-        <ellipse cx="35" cy="42" rx="27" ry="25" fill="white" stroke="#ffc2d4" stroke-width="1.5"/>
-        <ellipse cx="13" cy="26" rx="8" ry="8" fill="white" stroke="#ffc2d4" stroke-width="1.5"/>
-        <ellipse cx="57" cy="26" rx="8" ry="8" fill="white" stroke="#ffc2d4" stroke-width="1.5"/>
-        <ellipse cx="27" cy="40" rx="3" ry="3.5" fill="#1a1a1a"/>
-        <ellipse cx="43" cy="40" rx="3" ry="3.5" fill="#1a1a1a"/>
-        <ellipse cx="28.2" cy="38.5" rx="1.1" ry="1.1" fill="white"/>
-        <ellipse cx="44.2" cy="38.5" rx="1.1" ry="1.1" fill="white"/>
-        <ellipse cx="35" cy="46" rx="2.2" ry="1.8" fill="#e8003d"/>
-        <line x1="8" y1="42" x2="27" y2="44" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
-        <line x1="8" y1="47" x2="27" y2="47" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
-        <line x1="62" y1="42" x2="43" y2="44" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
-        <line x1="62" y1="47" x2="43" y2="47" stroke="#ddd" stroke-width="1" stroke-linecap="round"/>
-        <ellipse cx="23" cy="50" rx="5" ry="3.5" fill="#ffb3c6" opacity=".5"/>
-        <ellipse cx="47" cy="50" rx="5" ry="3.5" fill="#ffb3c6" opacity=".5"/>
+        <rect x="22" y="72" width="36" height="14" rx="7" fill="white" stroke="#f0c0d0" stroke-width="1.2"/>
       </svg>
     </div>
     <div class="letter-date">30 Aprilie 2026 — un an de cand ne-am cunoscut</div>
